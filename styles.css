@@ -396,3 +396,25 @@ main > section.profiles.page-hidden { display: none !important; }
 .music-catalogue-card h3 { margin:8px 0 3px; }
 .music-catalogue-card > p:not(.catalogue-date) { color:#d0c5ce; }
 @media(max-width:760px) { .catalogue-body { padding:17px; } .catalogue-cover { aspect-ratio:4/3; } }
+
+/* Fan projects archive and expandable career records */
+.fan-project-intro{max-width:850px;margin:0 0 22px;color:#d0c5ce;line-height:1.75}
+.fan-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.fan-project-card{position:relative;min-height:220px;padding:23px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel2),var(--panel));overflow:hidden}
+.fan-project-card:after{content:'';position:absolute;width:145px;height:145px;right:-65px;bottom:-75px;border-radius:50%;background:#c77f9f16}
+.fan-project-icon{display:block;color:var(--pink);font-size:30px;margin-bottom:12px}
+.fan-project-card h3{font-size:20px;margin:4px 0 9px}
+.fan-project-card p:not(.eyebrow){color:#d0c5ce;font-size:13px;line-height:1.65}
+.fan-project-note{display:inline-block;margin-top:9px;color:var(--pink);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.timeline-detail-button,.work-detail-back{display:inline-flex;align-items:center;border:1px solid var(--pink);border-radius:999px;padding:9px 14px;background:transparent;color:var(--pink);font:700 12px 'DM Sans',system-ui,sans-serif;cursor:pointer;margin-top:10px}
+.timeline-detail-button:hover,.work-detail-back:hover{background:var(--pink);color:#211820}
+.work-detail-panel{margin:0 0 22px;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel2),var(--panel))}
+.work-detail-panel[hidden]{display:none}
+.work-detail-content h2{font-size:clamp(25px,4vw,36px);margin:12px 0 5px}
+.work-detail-meta{color:var(--pink);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.work-detail-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.work-detail-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#100e12}
+.work-detail-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.work-detail-links a{color:var(--pink);font-weight:700;text-decoration:none}
+@media(max-width:760px){.fan-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-detail-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.fan-project-grid{grid-template-columns:1fr}.fan-project-card{min-height:0}.work-detail-gallery{grid-template-columns:1fr}}
