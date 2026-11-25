@@ -269,3 +269,8 @@ main > section.profiles.page-hidden { display: none !important; }
 #language-select { max-width:155px; padding:9px 30px 9px 11px; border:1px solid #756574; border-radius:999px; background:#211d22; color:var(--cream); font:600 12px 'DM Sans',system-ui,sans-serif; cursor:pointer; }
 #language-select:focus-visible { outline:2px solid var(--pink); outline-offset:3px; }
 @media(max-width:760px) { .site-header { column-gap:12px; } .language-switcher { margin-left:auto; order:2; } .menu-toggle { order:3; } nav { order:4; } .language-label { display:none; } #language-select { max-width:132px; padding:8px 24px 8px 9px; font-size:11px; } }
+
+
+/* Peachy hero: show on the home page and hide while browsing inner sections. */
+.hero { display: block !important; }
+.hero.page-hidden { display: none !important; }
