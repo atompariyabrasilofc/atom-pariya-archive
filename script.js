@@ -110,3 +110,19 @@ document.querySelectorAll('[data-slideshow="social-death-vote"]').forEach(slides
     }, 6000);
   }
 });
+
+
+// Re:Peach: load the exact public YouTube title for each archived live.
+document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
+  const videoId = card.dataset.videoId;
+  const titleLink = card.querySelector('[data-video-title]');
+  if (!videoId || !titleLink) return;
+  try {
+    const response = await fetch('https://www.youtube.com/oembed?url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + videoId) + '&format=json');
+    if (!response.ok) throw new Error('YouTube metadata unavailable');
+    const data = await response.json();
+    if (data.title) titleLink.textContent = data.title;
+  } catch (error) {
+    titleLink.textContent = 'Live da Atom · ver título no YouTube';
+  }
+});
