@@ -49,18 +49,54 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
   btn.classList.add('active');
 }));
 
-// Peachy artwork rotation — direct source swap for reliable Safari/Android behavior.
+// Peachy artwork protection and small integrated mascots across archive sections.
+const peachyAsset = '1.%20assets/Peachy/Padrao/6.png';
 const peachyImages = [
   ...[6,7,8,26,27,28,29,30,31,32,37,39,41].map(n => `1.%20assets/Peachy/Padrao/${n}.png`),
   ...[1,2,3,4,12,13,14,15].map(n => `1.%20assets/Peachy/Brasil/${n}.png`)
 ];
 const peachyImage = document.querySelector('#peachy-rotator');
+
+// Browsers cannot fully prevent screenshots or image extraction, but these measures
+// discourage casual saving, dragging and the mobile long-press image menu.
+function protectPeachyArtwork(image) {
+  if (!image) return;
+  image.draggable = false;
+  image.setAttribute('aria-label', 'Arte exclusiva do mascote Peachy');
+  ['contextmenu','dragstart','selectstart','copy'].forEach(type => {
+    image.addEventListener(type, event => event.preventDefault());
+  });
+}
+document.querySelectorAll('.peachy-showcase img').forEach(protectPeachyArtwork);
+
+// Add a small Peachy signature to section headings, so the mascot feels native to
+// each archive area without competing with titles or content.
+document.querySelectorAll('main .section-heading').forEach(heading => {
+  if (heading.querySelector('.section-peachy')) return;
+  const mascot = document.createElement('img');
+  mascot.className = 'section-peachy';
+  mascot.src = peachyAsset;
+  mascot.alt = '';
+  mascot.setAttribute('aria-hidden', 'true');
+  mascot.loading = 'lazy';
+  protectPeachyArtwork(mascot);
+  heading.appendChild(mascot);
+});
+const repeachHeading = document.querySelector('.live-archive-heading');
+if (repeachHeading && !repeachHeading.querySelector('.section-peachy')) {
+  const mascot = document.createElement('img');
+  mascot.className = 'section-peachy';
+  mascot.src = peachyAsset;
+  mascot.alt = '';
+  mascot.setAttribute('aria-hidden', 'true');
+  mascot.loading = 'lazy';
+  protectPeachyArtwork(mascot);
+  repeachHeading.appendChild(mascot);
+}
+
 if (peachyImage && peachyImages.length > 1) {
   let peachyIndex = 0;
-  let holdTimer = null;
-  let longPress = false;
   let rotationTimer = null;
-
   function showNextPeachy() {
     peachyIndex = (peachyIndex + 1) % peachyImages.length;
     peachyImage.classList.add('changing');
@@ -72,24 +108,7 @@ if (peachyImage && peachyImages.length > 1) {
     if (rotationTimer) window.clearInterval(rotationTimer);
     rotationTimer = window.setInterval(showNextPeachy, 3000);
   }
-  function startHold() {
-    longPress = false;
-    holdTimer = window.setTimeout(() => {
-      longPress = true;
-      peachyImage.classList.add('expanded');
-      if (navigator.vibrate) navigator.vibrate(45);
-    }, 500);
-  }
-  function endHold() {
-    if (holdTimer) window.clearTimeout(holdTimer);
-    holdTimer = null;
-    peachyImage.classList.remove('expanded');
-  }
-  peachyImage.addEventListener('pointerdown', startHold);
-  ['pointerup','pointercancel','pointerleave'].forEach(type => peachyImage.addEventListener(type, endHold));
-  peachyImage.addEventListener('contextmenu', event => event.preventDefault());
   peachyImage.addEventListener('click', () => {
-    if (longPress) { longPress = false; return; }
     showNextPeachy();
     startRotation();
   });
