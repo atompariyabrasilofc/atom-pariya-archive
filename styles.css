@@ -192,3 +192,12 @@ footer p { max-width: 650px; margin: 10px auto; }
   .works-grid, .music-links { grid-template-columns: 1fr; }
   .timeline-entry { grid-template-columns: 1fr; gap: 5px; }
 }
+
+
+/* ViewMim-style navigation: the landing page shows only the two profile cards. */
+.hero, .intro { display: none !important; }
+main > section:not(.profiles) { display: none; }
+main > section.page-active { display: block; }
+main > section.page-hidden { display: none !important; }
+.profiles { margin-top: 0; padding-top: 54px; min-height: calc(100vh - 170px); align-content: start; }
+nav a[aria-current="page"] { color: var(--cream); border-bottom: 1px solid var(--pink); padding-bottom: 5px; }
