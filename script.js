@@ -131,7 +131,7 @@ document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
 // Multilingual interface: Portuguese is the default; the selected language is remembered.
 const languageSelect = document.querySelector('#language-select');
 const translations = {
-  en: {
+  en: {\n    "ATOM PARIYA ARCHIVE":"ATOM PARIYA ARCHIVE",\n    "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.",\n    "Aestiny":"Aestiny",
     "Home":"Home","Timeline":"Timeline","Events":"Events","Projects":"Projects","Specials":"Specials",
     "A FAN-MADE ARCHIVE BY ATOM PARIYA BRASIL":"A FAN-MADE ARCHIVE BY ATOM PARIYA BRASIL",
     "Every moment, every chapter, preserved with love.":"Every moment, every chapter, preserved with love.",
@@ -178,7 +178,7 @@ const translations = {
     "Playlist with lives in which Atom participates, appears on screen or can be heard speaking in the background.":"Playlist with lives in which Atom participates, appears on screen or can be heard speaking in the background.",
     "Open the complete YouTube playlist ↗":"Open the complete YouTube playlist ↗"
   },
-  pt: {
+  pt: {\n    "ATOM PARIYA ARCHIVE":"ARQUIVO ATOM PARIYA",\n    "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Criado com carinho por Atom Pariya Brasil. Projeto feito por fãs, sem afiliação ou endosso de Atom ou de seus representantes.",\n    "Aestiny":"Aestiny",
     "Home":"Início","Timeline":"Linha do tempo","Events":"Eventos","Projects":"Projetos","Specials":"Especiais",
     "A FAN-MADE ARCHIVE BY ATOM PARIYA BRASIL":"UM ARQUIVO DE FÃS POR ATOM PARIYA BRASIL",
     "Every moment, every chapter, preserved with love.":"Cada momento, cada capítulo, preservado com carinho.",
@@ -225,7 +225,7 @@ const translations = {
     "Playlist with lives in which Atom participates, appears on screen or can be heard speaking in the background.":"Playlist com lives das quais Atom participa, aparece na tela ou pode ser ouvida falando ao fundo.",
     "Open the complete YouTube playlist ↗":"Abrir a playlist completa no YouTube ↗"
   },
-  es: {
+  es: {\n    "ATOM PARIYA ARCHIVE":"ARCHIVO ATOM PARIYA",\n    "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Creado con cariño por Atom Pariya Brasil. Proyecto hecho por fans, sin afiliación ni respaldo de Atom o sus representantes.",\n    "Aestiny":"Aestiny",
     "Home":"Inicio","Timeline":"Cronología","Events":"Eventos","Projects":"Proyectos","Specials":"Especiales",
     "A FAN-MADE ARCHIVE BY ATOM PARIYA BRASIL":"UN ARCHIVO DE FANS DE ATOM PARIYA BRASIL",
     "Every moment, every chapter, preserved with love.":"Cada momento, cada capítulo, preservado con cariño.",
@@ -272,7 +272,7 @@ const translations = {
     "Playlist with lives in which Atom participates, appears on screen or can be heard speaking in the background.":"Lista de directos en los que Atom participa, aparece en pantalla o se la escucha hablar de fondo.",
     "Open the complete YouTube playlist ↗":"Abrir la lista completa en YouTube ↗"
   },
-  th: {
+  th: {\n    "ATOM PARIYA ARCHIVE":"ATOM PARIYA ARCHIVE",\n    "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"จัดทำด้วยความรักโดย Atom Pariya Brasil เป็นโปรเจกต์แฟนคลับ ไม่ได้มีส่วนเกี่ยวข้องหรือได้รับการรับรองจาก Atom หรือผู้แทนของเธอ",\n    "Aestiny":"Aestiny",
     "Home":"หน้าแรก","Timeline":"ไทม์ไลน์","Events":"อีเวนต์","Projects":"โปรเจกต์","Specials":"คอลเลกชันพิเศษ",
     "A FAN-MADE ARCHIVE BY ATOM PARIYA BRASIL":"แฟนเมดอาร์ไคฟ์โดย ATOM PARIYA BRASIL",
     "Every moment, every chapter, preserved with love.":"เก็บรักษาทุกช่วงเวลาและทุกบทของเส้นทางนี้ไว้ด้วยความรัก",
