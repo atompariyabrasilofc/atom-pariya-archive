@@ -137,6 +137,29 @@ document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
 const languageSelect = document.querySelector('#language-select');
 const translations = {
   en: {
+    "Filters":"Filters",
+    "Platform":"Platform",
+    "All platforms":"All platforms",
+    "Search by words":"Search by words",
+    "Search titles and descriptions":"Search titles and descriptions",
+    "Period":"Period",
+    "Any date":"Any date",
+    "Today":"Today",
+    "Last 7 days":"Last 7 days",
+    "Last 30 days":"Last 30 days",
+    "Last 3 months":"Last 3 months",
+    "This year":"This year",
+    "Custom range":"Custom range",
+    "From":"From",
+    "To":"To",
+    "Sort":"Sort",
+    "Newest first":"Newest first",
+    "Oldest first":"Oldest first",
+    "Showing":"Showing",
+    "results":"results",
+    "No results found":"No results found",
+    "Try changing your filters or search terms.":"Try changing your filters or search terms.",
+    "Social media":"Social media",
     "No updates yet":"No updates yet",
     "New updates will appear here when added to the archive.":"New updates will appear here when added to the archive.",
     "View original post ↗":"View original post ↗",
@@ -199,6 +222,29 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Open the complete YouTube playlist ↗"
   },
   pt: {
+    "Filters":"Filtros",
+    "Platform":"Plataforma",
+    "All platforms":"Todas as plataformas",
+    "Search by words":"Buscar por palavras",
+    "Search titles and descriptions":"Buscar em títulos e descrições",
+    "Period":"Período",
+    "Any date":"Todas as datas",
+    "Today":"Hoje",
+    "Last 7 days":"Últimos 7 dias",
+    "Last 30 days":"Últimos 30 dias",
+    "Last 3 months":"Últimos 3 meses",
+    "This year":"Este ano",
+    "Custom range":"Intervalo personalizado",
+    "From":"De",
+    "To":"Até",
+    "Sort":"Ordenação",
+    "Newest first":"Mais recentes",
+    "Oldest first":"Mais antigos",
+    "Showing":"Exibindo",
+    "results":"resultados",
+    "No results found":"Nenhum resultado encontrado",
+    "Try changing your filters or search terms.":"Tente alterar os filtros ou os termos da busca.",
+    "Social media":"Rede social",
     "No updates yet":"Ainda não há atualizações",
     "New updates will appear here when added to the archive.":"As novidades aparecerão aqui quando forem adicionadas ao arquivo.",
     "View original post ↗":"Ver publicação original ↗",
@@ -261,6 +307,29 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir a playlist completa no YouTube ↗"
   },
   es: {
+    "Filters":"Filtros",
+    "Platform":"Plataforma",
+    "All platforms":"Todas las plataformas",
+    "Search by words":"Buscar por palabras",
+    "Search titles and descriptions":"Buscar en títulos y descripciones",
+    "Period":"Período",
+    "Any date":"Todas las fechas",
+    "Today":"Hoy",
+    "Last 7 days":"Últimos 7 días",
+    "Last 30 days":"Últimos 30 días",
+    "Last 3 months":"Últimos 3 meses",
+    "This year":"Este año",
+    "Custom range":"Rango personalizado",
+    "From":"Desde",
+    "To":"Hasta",
+    "Sort":"Orden",
+    "Newest first":"Más recientes",
+    "Oldest first":"Más antiguos",
+    "Showing":"Mostrando",
+    "results":"resultados",
+    "No results found":"No se encontraron resultados",
+    "Try changing your filters or search terms.":"Intenta cambiar los filtros o los términos de búsqueda.",
+    "Social media":"Red social",
     "No updates yet":"Aún no hay actualizaciones",
     "New updates will appear here when added to the archive.":"Las novedades aparecerán aquí cuando se añadan al archivo.",
     "View original post ↗":"Ver publicación original ↗",
@@ -323,6 +392,29 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir la lista completa en YouTube ↗"
   },
   th: {
+    "Filters":"ตัวกรอง",
+    "Platform":"แพลตฟอร์ม",
+    "All platforms":"ทุกแพลตฟอร์ม",
+    "Search by words":"ค้นหาด้วยคำ",
+    "Search titles and descriptions":"ค้นหาในชื่อและคำอธิบาย",
+    "Period":"ช่วงเวลา",
+    "Any date":"ทุกวันที่",
+    "Today":"วันนี้",
+    "Last 7 days":"7 วันที่ผ่านมา",
+    "Last 30 days":"30 วันที่ผ่านมา",
+    "Last 3 months":"3 เดือนที่ผ่านมา",
+    "This year":"ปีนี้",
+    "Custom range":"กำหนดช่วงเวลา",
+    "From":"ตั้งแต่",
+    "To":"ถึง",
+    "Sort":"เรียงลำดับ",
+    "Newest first":"ใหม่ที่สุดก่อน",
+    "Oldest first":"เก่าที่สุดก่อน",
+    "Showing":"แสดง",
+    "results":"รายการ",
+    "No results found":"ไม่พบผลลัพธ์",
+    "Try changing your filters or search terms.":"ลองเปลี่ยนตัวกรองหรือคำค้นหา",
+    "Social media":"โซเชียลมีเดีย",
     "No updates yet":"ยังไม่มีอัปเดต",
     "New updates will appear here when added to the archive.":"อัปเดตใหม่จะแสดงที่นี่เมื่อเพิ่มลงในคลัง",
     "View original post ↗":"ดูโพสต์ต้นฉบับ ↗",
@@ -429,31 +521,85 @@ if (languageSelect) {
 setLanguage(initialLanguage);
 
 
-// Social Updates: entries are maintained separately in data/social-updates.json.
+// Social Updates: category tabs and combined filters.
 const socialGrid = document.querySelector('#social-updates-grid');
 const socialFilters = [...document.querySelectorAll('[data-social-filter]')];
+const socialPlatform = document.querySelector('#social-platform-filter');
+const socialSearch = document.querySelector('#social-search');
+const socialPeriod = document.querySelector('#social-period');
+const socialSort = document.querySelector('#social-sort');
+const socialFrom = document.querySelector('#social-from');
+const socialTo = document.querySelector('#social-to');
+const socialCount = document.querySelector('#social-results-count');
 let socialEntries = [];
 let activeSocialCategory = 'posts';
+
+function socialDictionary() {
+  const lang = document.documentElement.lang === 'pt-BR' ? 'pt' : document.documentElement.lang;
+  return translations[lang] || translations.en;
+}
+function localDateString(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return year + '-' + month + '-' + day;
+}
+function populateSocialPlatforms() {
+  if (!socialPlatform) return;
+  const dictionary = socialDictionary();
+  const known = ['Instagram','TikTok','X','Facebook','Weibo','YouTube','Threads'];
+  const extra = socialEntries.map(entry => entry.platform).filter(Boolean);
+  const platforms = [...new Set([...known, ...extra])].sort((a,b) => known.indexOf(a) - known.indexOf(b));
+  const selected = socialPlatform.value || 'all';
+  socialPlatform.innerHTML = '<option value="all">' + dictionary['All platforms'] + '</option>' +
+    platforms.map(platform => '<option value="' + platform.replace(/"/g,'&quot;') + '">' + platform + '</option>').join('');
+  socialPlatform.value = platforms.includes(selected) ? selected : 'all';
+}
 function renderSocialUpdates() {
   if (!socialGrid) return;
-  const entries = socialEntries.filter(entry => entry.category === activeSocialCategory);
-  const lang = document.documentElement.lang === 'pt-BR' ? 'pt' : document.documentElement.lang;
-  const dictionary = translations[lang] || translations.en;
+  const dictionary = socialDictionary();
+  const today = new Date();
+  const todayString = localDateString(today);
+  const period = socialPeriod?.value || 'all';
+  let startDate = '';
+  let endDate = '';
+  if (period === 'today') startDate = endDate = todayString;
+  if (period === '7d') { const d = new Date(today); d.setDate(d.getDate()-6); startDate = localDateString(d); endDate = todayString; }
+  if (period === '30d') { const d = new Date(today); d.setDate(d.getDate()-29); startDate = localDateString(d); endDate = todayString; }
+  if (period === '90d') { const d = new Date(today); d.setDate(d.getDate()-89); startDate = localDateString(d); endDate = todayString; }
+  if (period === 'year') startDate = today.getFullYear() + '-01-01', endDate = todayString;
+  if (period === 'custom') { startDate = socialFrom?.value || ''; endDate = socialTo?.value || ''; }
+  const query = (socialSearch?.value || '').trim().toLocaleLowerCase();
+  let entries = socialEntries.filter(entry => {
+    if (entry.category !== activeSocialCategory) return false;
+    if (socialPlatform?.value && socialPlatform.value !== 'all' && entry.platform !== socialPlatform.value) return false;
+    const searchable = [entry.title, entry.description, entry.platform, entry.category].join(' ').toLocaleLowerCase();
+    if (query && !searchable.includes(query)) return false;
+    const date = entry.publicationDate || entry.date || '';
+    if (startDate && (!date || date < startDate)) return false;
+    if (endDate && (!date || date > endDate)) return false;
+    return true;
+  });
+  entries.sort((a,b) => {
+    const dateA = a.publicationDate || a.date || '';
+    const dateB = b.publicationDate || b.date || '';
+    return socialSort?.value === 'oldest' ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
+  });
+  if (socialCount) socialCount.textContent = dictionary['Showing'] + ' ' + entries.length + ' ' + dictionary['results'];
   if (!entries.length) {
-    const labels = {posts:dictionary['Posts'],interactions:dictionary['Interactions'],'fan-moments':dictionary['Fan Moments']};
-    const emptyTitle = dictionary['No updates yet'];
-    const emptyText = dictionary['New updates will appear here when added to the archive.'];
-    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>' + emptyTitle + '</h3><p>' + emptyText + '</p></div>';
+    const title = socialEntries.some(entry => entry.category === activeSocialCategory) ? dictionary['No results found'] : dictionary['No updates yet'];
+    const message = socialEntries.some(entry => entry.category === activeSocialCategory) ? dictionary['Try changing your filters or search terms.'] : dictionary['New updates will appear here when added to the archive.'];
+    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>' + title + '</h3><p>' + message + '</p></div>';
     return;
   }
   socialGrid.innerHTML = entries.map(entry => {
     const media = entry.image ? '<img class="social-update-media" src="' + entry.image + '" alt="' + (entry.imageAlt || entry.title || 'Atom Pariya social update').replace(/"/g,'&quot;') + '" loading="lazy">' : '<div class="social-update-placeholder" aria-hidden="true">♡</div>';
     const title = (entry.title || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const description = (entry.description || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const platform = (entry.platform || 'Social media').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const date = (entry.date || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">' + (dictionary['View original post ↗'] || 'View original post ↗') + '</a>' : '';
-    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + '</span><time>' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + link + '</div></article>';
+    const platform = (entry.platform || dictionary['Social media']).replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const date = (entry.publicationDate || entry.date || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">' + dictionary['View original post ↗'] + '</a>' : '';
+    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + '</span><time datetime="' + date + '">' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + link + '</div></article>';
   }).join('');
 }
 socialFilters.forEach(button => button.addEventListener('click', () => {
@@ -461,9 +607,17 @@ socialFilters.forEach(button => button.addEventListener('click', () => {
   socialFilters.forEach(item => item.classList.toggle('active', item === button));
   renderSocialUpdates();
 }));
+[socialPlatform, socialSearch, socialPeriod, socialSort, socialFrom, socialTo].forEach(control => {
+  control?.addEventListener('input', renderSocialUpdates);
+  control?.addEventListener('change', renderSocialUpdates);
+});
+socialPeriod?.addEventListener('change', () => {
+  const custom = socialPeriod.value === 'custom';
+  document.querySelector('.social-custom-dates')?.classList.toggle('visible', custom);
+});
 if (socialGrid) {
   fetch('data/social-updates.json')
     .then(response => { if (!response.ok) throw new Error('Social updates data unavailable'); return response.json(); })
-    .then(data => { socialEntries = Array.isArray(data) ? data : []; renderSocialUpdates(); })
-    .catch(() => renderSocialUpdates());
+    .then(data => { socialEntries = Array.isArray(data) ? data : []; populateSocialPlatforms(); renderSocialUpdates(); })
+    .catch(() => { socialEntries = []; populateSocialPlatforms(); renderSocialUpdates(); });
 }
