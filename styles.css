@@ -274,3 +274,21 @@ main > section.profiles.page-hidden { display: none !important; }
 /* Peachy hero: show on the home page and hide while browsing inner sections. */
 .hero { display: block !important; }
 .hero.page-hidden { display: none !important; }
+
+
+/* Social Updates archive */
+.social-update-categories { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 22px; }
+.social-filter { border:1px solid var(--line); border-radius:999px; padding:9px 17px; background:var(--panel); color:var(--muted); font:700 12px 'DM Sans',system-ui,sans-serif; cursor:pointer; transition:all .2s ease; }
+.social-filter:hover,.social-filter.active { border-color:var(--pink); background:#382733; color:var(--cream); }
+.social-updates-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.social-update-card { overflow:hidden; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
+.social-update-media { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:var(--panel2); }
+.social-update-placeholder { display:grid; place-items:center; width:100%; aspect-ratio:4/5; background:linear-gradient(145deg,#382733,#211d22); color:var(--pink); font-size:42px; }
+.social-update-body { padding:16px; }
+.social-update-meta { display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:11px; }
+.social-update-body h3 { margin:8px 0; font-size:17px; }
+.social-update-body p { color:#d0c6ce; font-size:13px; margin:0 0 12px; }
+.social-update-link { color:var(--pink); font-size:12px; font-weight:800; text-decoration:none; }
+.social-empty { grid-column:1/-1; }
+@media(max-width:760px) { .social-updates-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:520px) { .social-updates-grid { grid-template-columns:1fr; } .social-update-categories { gap:7px; } .social-filter { padding:8px 12px; font-size:11px; } }
