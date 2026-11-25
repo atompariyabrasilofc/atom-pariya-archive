@@ -53,6 +53,12 @@ nav a:hover, .text-link:hover { color: var(--silver); }
 .eyebrow { color: var(--pink); font-size: 11px; font-weight: 800; letter-spacing: .2em; margin: 0 0 10px; }
 .hero h1 { font-size: clamp(38px, 8vw, 82px); line-height: 1.05; margin: 8px 0 18px; letter-spacing: -.05em; }
 .subtitle { font-size: clamp(16px, 2.5vw, 22px); color: #d5cbd2; margin: 0 auto 25px; }
+.peachy-showcase { display: flex; flex-direction: column; align-items: center; gap: 7px; margin: 28px auto 0; }
+.peachy-showcase img { display: block; width: min(220px, 54vw); height: 210px; object-fit: contain; filter: drop-shadow(0 12px 22px #0006); opacity: 1; transition: opacity .45s ease, transform .45s ease; }
+.peachy-showcase img.changing { opacity: .15; transform: translateY(7px) scale(.97); }
+.peachy-showcase span { color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+@media (max-width: 760px) { .peachy-showcase { margin-top: 24px; } .peachy-showcase img { height: 180px; } }
+@media (prefers-reduced-motion: reduce) { .peachy-showcase img { transition: none; } }
 .section-wrap { width: min(1120px, calc(100% - 36px)); margin: 0 auto; padding: 48px 0; }
 .profiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: -25px; }
 .profile-card, .project-card {
