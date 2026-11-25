@@ -69,31 +69,7 @@ function protectPeachyArtwork(image) {
 }
 document.querySelectorAll('.peachy-showcase img').forEach(protectPeachyArtwork);
 
-// Add a small Peachy signature to section headings, so the mascot feels native to
-// each archive area without competing with titles or content.
-document.querySelectorAll('main .section-heading').forEach(heading => {
-  if (heading.querySelector('.section-peachy')) return;
-  const mascot = document.createElement('img');
-  mascot.className = 'section-peachy';
-  mascot.src = peachyAsset;
-  mascot.alt = '';
-  mascot.setAttribute('aria-hidden', 'true');
-  mascot.loading = 'lazy';
-  protectPeachyArtwork(mascot);
-  heading.appendChild(mascot);
-});
-const repeachHeading = document.querySelector('.live-archive-heading');
-if (repeachHeading && !repeachHeading.querySelector('.section-peachy')) {
-  const mascot = document.createElement('img');
-  mascot.className = 'section-peachy';
-  mascot.src = peachyAsset;
-  mascot.alt = '';
-  mascot.setAttribute('aria-hidden', 'true');
-  mascot.loading = 'lazy';
-  protectPeachyArtwork(mascot);
-  repeachHeading.appendChild(mascot);
-}
-
+// Peachy mascots are part of the HTML headings, so they appear reliably on every tab.
 if (peachyImage && peachyImages.length > 1) {
   let peachyIndex = 0;
   let rotationTimer = null;
