@@ -96,3 +96,17 @@ if (peachyImage) {
   });
   window.setInterval(showNextPeachy, 4500);
 }
+
+
+// Timeline photo rotation: six Social Death Vote photos, one every six seconds.
+document.querySelectorAll('[data-slideshow="social-death-vote"]').forEach(slideshow => {
+  const slides = [...slideshow.querySelectorAll('.timeline-slide')];
+  let current = 0;
+  if (slides.length > 1) {
+    window.setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 6000);
+  }
+});
