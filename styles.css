@@ -201,3 +201,9 @@ main > section.page-active { display: block; }
 main > section.page-hidden { display: none !important; }
 .profiles { margin-top: 0; padding-top: 54px; min-height: calc(100vh - 170px); align-content: start; }
 nav a[aria-current="page"] { color: var(--cream); border-bottom: 1px solid var(--pink); padding-bottom: 5px; }
+
+/* Fix: preserve the two-card home grid and allow selected sections to display. */
+main > section:not(.profiles).page-active { display: block !important; }
+main > section:not(.profiles).page-hidden { display: none !important; }
+main > section.profiles.page-active { display: grid !important; }
+main > section.profiles.page-hidden { display: none !important; }
