@@ -306,3 +306,10 @@ main > section.profiles.page-hidden { display: none !important; }
 .social-results-count { margin:13px 0 0; color:var(--muted); font-size:11px; }
 @media(max-width:760px) { .social-filter-controls { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:480px) { .social-filter-panel { padding:13px; } .social-filter-controls { grid-template-columns:1fr; } .social-custom-dates { grid-template-columns:1fr; } }
+
+
+/* Social Updates engagement metrics */
+.social-update-metrics { display:flex; flex-wrap:wrap; gap:7px 12px; margin:0 0 13px; color:var(--muted); font-size:11px; }
+.social-update-metrics span { white-space:nowrap; }
+.social-update-metrics strong { color:var(--cream); font-weight:800; }
+.social-update-meta { flex-wrap:wrap; }
