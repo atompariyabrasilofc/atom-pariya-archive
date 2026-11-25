@@ -658,3 +658,16 @@ if(socialGrid){
 }
 languageSelect?.addEventListener('change',refreshSocialFilterLanguage);
 refreshSocialFilterLanguage();
+
+// Individual career records opened from the Timeline.
+const careerRecords={
+'social-death-vote':{title:'Social Death Vote',kind:'Série · Suspense · Mistério',dates:'19 de maio a 23 de junho de 2018',description:'Primeiro trabalho de atuação de Atom. Ela interpretou Best na série exibida pelo Channel 3.',gallery:['1.%20assets/Timeline/Social%20Death%20Vote/IMG_2840.jpeg','1.%20assets/Timeline/Social%20Death%20Vote/IMG_2841.jpeg','1.%20assets/Timeline/Social%20Death%20Vote/IMG_2842.jpeg','1.%20assets/Timeline/Social%20Death%20Vote/IMG_2843.jpeg','1.%20assets/Timeline/Social%20Death%20Vote/IMG_2844.jpeg','1.%20assets/Timeline/Social%20Death%20Vote/IMG_2845.jpeg'],links:[['Perfil de Atom no MyDramaList','https://mydramalist.com/people/19658-atom-pariya-piyapanopas']]},
+'broken-of-love':{title:'BROKEN (Of) LOVE · หัวใจช้ำรัก',kind:'Série · Drama · Romance · GL',dates:'28 de março a 16 de maio de 2026',description:'Atom interpreta Lalin / Lyla na produção da Fabel Entertainment. Este arquivo reúne as informações e poderá receber cartazes, fotos promocionais, vídeos, entrevistas, episódios e links oficiais.',gallery:['https://img.youtube.com/vi/T6h6tDomGQM/maxresdefault.jpg'],links:[['Assistir ao primeiro episódio','https://www.youtube.com/watch?v=T6h6tDomGQM'],['Perfil de Atom no MyDramaList','https://mydramalist.com/people/19658-atom-pariya-piyapanopas']]},
+'viis':{title:'VIIS · GNEST',kind:'Grupo musical · T-pop',dates:'2023–2025',description:'Arquivo da trajetória musical de Atom como integrante do grupo VIIS. Músicas, apresentações, vídeos e participações serão reunidos aqui conforme os materiais forem catalogados.',gallery:[],links:[['Canal oficial do VIIS no YouTube','https://www.youtube.com/@gnest_official']] }
+};
+const careerPanel=document.querySelector('#work-detail-panel');
+const careerContent=document.querySelector('#work-detail-content');
+const careerTimeline=document.querySelector('#timeline .timeline-list');
+function openCareerRecord(key){const item=careerRecords[key];if(!item||!careerPanel||!careerContent)return;const safe=s=>String(s).replace(/[&<>\"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));careerContent.innerHTML='<div class="work-detail-content"><p class="work-detail-meta">'+safe(item.kind)+'</p><h2>'+safe(item.title)+'</h2><p class="catalogue-date">'+safe(item.dates)+'</p><p>'+safe(item.description)+'</p>'+(item.gallery.length?'<div class="work-detail-gallery">'+item.gallery.map((src,i)=>'<img src="'+safe(src)+'" alt="'+safe(item.title)+' — imagem '+(i+1)+'" loading="lazy">').join('')+'</div>':'')+'<div class="work-detail-links">'+item.links.map(([label,url])=>'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(label)+' ↗</a>').join('')+'</div></div>';careerPanel.hidden=false;careerTimeline.hidden=true;careerPanel.scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('[data-work-detail]').forEach(button=>button.addEventListener('click',()=>openCareerRecord(button.dataset.workDetail)));
+document.querySelector('[data-work-back]')?.addEventListener('click',()=>{careerPanel.hidden=true;careerTimeline.hidden=false;careerTimeline.scrollIntoView({behavior:'smooth',block:'start'});});
