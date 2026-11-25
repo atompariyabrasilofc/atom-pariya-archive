@@ -37,9 +37,8 @@ a { transition: color .2s ease, background .2s ease, border-color .2s ease, tran
   color: var(--cream); text-decoration: none; font-weight: 800;
   letter-spacing: .04em; line-height: 1.1; flex-shrink: 0;
 }
-.brand-logo { display: block; width: auto; height: 64px; max-width: min(230px, 42vw); object-fit: contain; object-position: left center; }
-.brand-label { color: var(--cream); font-size: 17px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
-.brand-logo { display: block; width: auto; height: 48px; max-width: min(190px, 42vw); object-fit: contain; object-position: left center; }
+.brand-logo { display: block; width: auto; height: 76px; max-width: min(245px, 43vw); object-fit: contain; object-position: left center; }
+.brand-label { display: flex; flex-direction: column; color: var(--cream); font-size: 15px; font-weight: 750; letter-spacing: .07em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
 .peach { font-size: 30px; }
 nav { display: flex; gap: clamp(12px, 2.3vw, 30px); flex-wrap: wrap; }
 nav a, .text-link { color: var(--pink); text-decoration: none; font-weight: 600; }
@@ -121,8 +120,8 @@ footer p { max-width: 650px; margin: 10px auto; }
 @media (max-width: 760px) {
   .site-header { flex-wrap: wrap; }
   .brand { gap: 9px; }
-  .brand-logo { height: 52px; max-width: min(175px, 42vw); }
-  .brand-label { font-size: 13px; }
+  .brand-logo { height: 60px; max-width: min(170px, 40vw); }
+  .brand-label { font-size: 12px; letter-spacing: .055em; }
   .menu-toggle { display: block; }
   nav { display: none; width: 100%; flex-direction: column; padding: 8px 0 12px; }
   nav.open { display: flex; }
