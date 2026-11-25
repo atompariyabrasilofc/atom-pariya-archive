@@ -621,3 +621,10 @@ if (socialGrid) {
     .then(data => { socialEntries = Array.isArray(data) ? data : []; populateSocialPlatforms(); renderSocialUpdates(); })
     .catch(() => { socialEntries = []; populateSocialPlatforms(); renderSocialUpdates(); });
 }
+function refreshSocialFilterLanguage() {
+  const dictionary = socialDictionary();
+  if (socialSearch) socialSearch.placeholder = dictionary['Search titles and descriptions'];
+  populateSocialPlatforms();
+  renderSocialUpdates();
+}
+languageSelect?.addEventListener('change', refreshSocialFilterLanguage);
