@@ -137,6 +137,9 @@ document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
 const languageSelect = document.querySelector('#language-select');
 const translations = {
   en: {
+    "No updates yet":"No updates yet",
+    "New updates will appear here when added to the archive.":"New updates will appear here when added to the archive.",
+    "View original post ↗":"View original post ↗",
     "Social Updates":"Social Updates",
     "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · SOCIAL MEDIA ARCHIVE",
     "Posts":"Posts",
@@ -196,6 +199,9 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Open the complete YouTube playlist ↗"
   },
   pt: {
+    "No updates yet":"Ainda não há atualizações",
+    "New updates will appear here when added to the archive.":"As novidades aparecerão aqui quando forem adicionadas ao arquivo.",
+    "View original post ↗":"Ver publicação original ↗",
     "Social Updates":"Atualizações nas redes",
     "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · ARQUIVO DE REDES SOCIAIS",
     "Posts":"Publicações",
@@ -255,6 +261,9 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir a playlist completa no YouTube ↗"
   },
   es: {
+    "No updates yet":"Aún no hay actualizaciones",
+    "New updates will appear here when added to the archive.":"Las novedades aparecerán aquí cuando se añadan al archivo.",
+    "View original post ↗":"Ver publicación original ↗",
     "Social Updates":"Actualizaciones en redes",
     "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · ARCHIVO DE REDES SOCIALES",
     "Posts":"Publicaciones",
@@ -314,6 +323,9 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir la lista completa en YouTube ↗"
   },
   th: {
+    "No updates yet":"ยังไม่มีอัปเดต",
+    "New updates will appear here when added to the archive.":"อัปเดตใหม่จะแสดงที่นี่เมื่อเพิ่มลงในคลัง",
+    "View original post ↗":"ดูโพสต์ต้นฉบับ ↗",
     "Social Updates":"อัปเดตโซเชียล",
     "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · คลังโซเชียลมีเดีย",
     "Posts":"โพสต์",
@@ -425,9 +437,13 @@ let activeSocialCategory = 'posts';
 function renderSocialUpdates() {
   if (!socialGrid) return;
   const entries = socialEntries.filter(entry => entry.category === activeSocialCategory);
+  const lang = document.documentElement.lang === 'pt-BR' ? 'pt' : document.documentElement.lang;
+  const dictionary = translations[lang] || translations.en;
   if (!entries.length) {
-    const labels = {posts:'Posts',interactions:'Interactions','fan-moments':'Fan Moments'};
-    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>No updates yet</h3><p>New ' + labels[activeSocialCategory] + ' will appear here when added to the archive.</p></div>';
+    const labels = {posts:dictionary['Posts'],interactions:dictionary['Interactions'],'fan-moments':dictionary['Fan Moments']};
+    const emptyTitle = dictionary['No updates yet'];
+    const emptyText = dictionary['New updates will appear here when added to the archive.'];
+    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>' + emptyTitle + '</h3><p>' + emptyText + '</p></div>';
     return;
   }
   socialGrid.innerHTML = entries.map(entry => {
@@ -436,7 +452,7 @@ function renderSocialUpdates() {
     const description = (entry.description || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const platform = (entry.platform || 'Social media').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const date = (entry.date || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">View original post ↗</a>' : '';
+    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">' + (dictionary['View original post ↗'] || 'View original post ↗') + '</a>' : '';
     return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + '</span><time>' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + link + '</div></article>';
   }).join('');
 }
