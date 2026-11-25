@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#171318">
   <title>Atom Pariya Archive | Brazil</title>
   <meta name="description" content="A fan-made archive dedicated to Atom Pariya, created by Atom Pariya Brasil.">
-  <link rel="stylesheet" href="styles.css?v=social-instagram-feed-1">
+  <link rel="stylesheet" href="styles.css?v=social-interactions-peachy-protection-2">
 </head>
 <body>
 <header class="site-header">
@@ -106,16 +106,23 @@
   </section>
   <section class="section-wrap" id="social-updates">
     <div class="section-heading"><div><p class="eyebrow">ATOM · SOCIAL MEDIA ARCHIVE</p><h2>Social Updates</h2><p class="muted">Posts and moments shared by Atom across her official social media accounts.</p></div></div>
-    <div class="social-update-categories" role="group" aria-label="Filter social updates">
-      <button class="social-filter active" type="button" data-social-filter="posts">Posts</button>
-      <button class="social-filter" type="button" data-social-filter="interactions">Interactions</button>
-      <button class="social-filter" type="button" data-social-filter="fan-moments">Fan Moments</button>
+    <div class="social-toolbar">
+      <div class="social-update-categories" role="group" aria-label="Filter social publications">
+        <button class="social-filter active" type="button" data-social-filter="all">All publications</button>
+        <button class="social-filter" type="button" data-social-filter="posts">Posts</button>
+        <button class="social-filter" type="button" data-social-filter="interactions">Interactions</button>
+        <button class="social-filter" type="button" data-social-filter="fan-moments">Fan Moments</button>
+      </div>
+      <div class="social-view-switch" role="group" aria-label="Choose display mode">
+        <button class="social-view-button active" type="button" data-social-view="feed" aria-pressed="true">Feed</button>
+        <button class="social-view-button" type="button" data-social-view="table" aria-pressed="false">Table</button>
+      </div>
     </div>
     <div class="social-filter-panel">
       <p class="social-filter-title">Filters</p>
       <div class="social-filter-controls">
         <label class="social-control"><span>Platform</span><select id="social-platform-filter"><option value="all">All platforms</option></select></label>
-        <label class="social-control social-search-control"><span>Search by words</span><input id="social-search" type="search" placeholder="Search titles and descriptions"></label>
+        <label class="social-control social-search-control"><span>Search captions & hashtags</span><input id="social-search" type="search" placeholder="Search captions, translations, hashtags..."></label>
         <label class="social-control"><span>Period</span><select id="social-period">
           <option value="all">Any date</option><option value="today">Today</option><option value="7d">Last 7 days</option><option value="30d">Last 30 days</option><option value="90d">Last 3 months</option><option value="year">This year</option><option value="custom">Custom range</option>
         </select></label>
@@ -556,5 +563,5 @@
   </section>
 </main>
 <footer><strong>ATOM PARIYA ARCHIVE</strong><p>Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.</p><span>Aestiny</span></footer>
-<script src="script.js?v=social-instagram-feed-1"></script>
+<script src="script.js?v=social-interactions-peachy-protection-2"></script>
 </body></html>
