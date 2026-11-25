@@ -376,3 +376,23 @@ main > section.profiles.page-hidden { display: none !important; }
     margin-left: 10px;
   }
 }
+
+
+/* Projects catalogue cards */
+.projects-catalogue { align-items:stretch; }
+.catalogue-card { padding:0; overflow:hidden; display:flex; flex-direction:column; }
+.catalogue-cover { width:100%; aspect-ratio:16/10; overflow:hidden; background:linear-gradient(145deg,#392b37,#211d22); }
+.catalogue-cover img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+.catalogue-body { padding:20px 22px 23px; }
+.catalogue-kind { display:flex; align-items:center; gap:8px; min-height:34px; color:var(--pink); font-size:11px; font-weight:800; letter-spacing:.16em; }
+.work-peachy { display:block; width:34px; height:34px; object-fit:contain; flex:0 0 34px; -webkit-touch-callout:none; -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
+.catalogue-body h3 { margin:7px 0 5px; font-size:clamp(19px,2.2vw,24px); line-height:1.25; }
+.catalogue-date { margin:0 0 13px !important; color:var(--muted) !important; font-size:13px; }
+.catalogue-description { color:#d0c5ce; }
+.catalogue-format { color:var(--muted) !important; font-size:12px; }
+.catalogue-body a { display:inline-block; margin-top:7px; color:var(--pink); font-size:12px; font-weight:800; text-decoration:none; }
+.catalogue-body a:hover { color:var(--silver); }
+.music-catalogue-card { padding:22px; }
+.music-catalogue-card h3 { margin:8px 0 3px; }
+.music-catalogue-card > p:not(.catalogue-date) { color:#d0c5ce; }
+@media(max-width:760px) { .catalogue-body { padding:17px; } .catalogue-cover { aspect-ratio:4/3; } }
