@@ -2,10 +2,12 @@ const toggle=document.querySelector('.menu-toggle');
 const nav=document.querySelector('#nav');
 const brand=document.querySelector('.brand');
 const profileHome=document.querySelector('#home-cards');
+const hero=document.querySelector('.hero');
 const pageSections=[...document.querySelectorAll('main > section')].filter(section=>section!==profileHome && !section.classList.contains('hero') && !section.classList.contains('intro'));
 
 function showPage(target) {
   const isHome = target === 'home-cards' || !target;
+  hero?.classList.toggle('page-hidden', !isHome);
   profileHome.classList.toggle('page-active', isHome);
   profileHome.classList.toggle('page-hidden', !isHome);
   pageSections.forEach(section => {
