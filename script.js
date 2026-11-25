@@ -49,24 +49,39 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
   btn.classList.add('active');
 }));
 
-// Peachy artwork interaction and rotation. Only standard and Brazil artwork are included.
+// Peachy artwork interaction and rotation. Preload the artwork for reliable mobile display.
 const peachyImages = [
   ...[6,7,8,26,27,28,29,30,31,32,37,39,41].map(n => `1.%20assets/Peachy/Padrao/${n}.png`),
   ...[1,2,3,4,12,13,14,15].map(n => `1.%20assets/Peachy/Brasil/${n}.png`)
 ];
 const peachyImage = document.querySelector('#peachy-rotator');
-if (peachyImage) {
+if (peachyImage && peachyImages.length > 1) {
   let peachyIndex = 0;
   let holdTimer = null;
   let longPress = false;
-  const holdDuration = 500;
+  let rotationTimer = null;
+  peachyImages.forEach(src => { const preload = new Image(); preload.src = src; });
+
   function showNextPeachy() {
+    peachyIndex = (peachyIndex + 1) % peachyImages.length;
+    const nextSrc = peachyImages[peachyIndex];
     peachyImage.classList.add('changing');
-    window.setTimeout(() => {
-      peachyIndex = (peachyIndex + 1) % peachyImages.length;
-      peachyImage.src = peachyImages[peachyIndex];
+    const reveal = () => {
+      peachyImage.src = nextSrc;
       peachyImage.classList.remove('changing');
-    }, 180);
+    };
+    const probe = new Image();
+    probe.onload = reveal;
+    probe.onerror = () => {
+      peachyImage.classList.remove('changing');
+      console.warn('Não foi possível carregar a arte Peachy:', nextSrc);
+    };
+    probe.src = nextSrc;
+  }
+
+  function startRotation() {
+    if (rotationTimer) window.clearInterval(rotationTimer);
+    rotationTimer = window.setInterval(showNextPeachy, 3500);
   }
   function startHold() {
     longPress = false;
@@ -74,7 +89,7 @@ if (peachyImage) {
       longPress = true;
       peachyImage.classList.add('expanded');
       if (navigator.vibrate) navigator.vibrate(45);
-    }, holdDuration);
+    }, 500);
   }
   function endHold() {
     if (holdTimer) window.clearTimeout(holdTimer);
@@ -82,23 +97,22 @@ if (peachyImage) {
     peachyImage.classList.remove('expanded');
   }
   peachyImage.addEventListener('pointerdown', startHold);
-  peachyImage.addEventListener('pointerup', endHold);
-  peachyImage.addEventListener('pointercancel', endHold);
-  peachyImage.addEventListener('pointerleave', endHold);
+  ['pointerup','pointercancel','pointerleave'].forEach(type => peachyImage.addEventListener(type, endHold));
   peachyImage.addEventListener('contextmenu', event => event.preventDefault());
   peachyImage.addEventListener('click', () => {
     if (longPress) { longPress = false; return; }
     showNextPeachy();
+    startRotation();
   });
   peachyImage.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       showNextPeachy();
+      startRotation();
     }
   });
-  window.setInterval(showNextPeachy, 4500);
+  startRotation();
 }
-
 
 // Timeline photo rotation: six Social Death Vote photos, one every six seconds.
 document.querySelectorAll('[data-slideshow="social-death-vote"]').forEach(slideshow => {
