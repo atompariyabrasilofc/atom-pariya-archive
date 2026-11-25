@@ -379,3 +379,39 @@ if (languageSelect) {
   languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));
 }
 setLanguage(initialLanguage);
+
+
+// Social Updates: entries are maintained separately in data/social-updates.json.
+const socialGrid = document.querySelector('#social-updates-grid');
+const socialFilters = [...document.querySelectorAll('[data-social-filter]')];
+let socialEntries = [];
+let activeSocialCategory = 'posts';
+function renderSocialUpdates() {
+  if (!socialGrid) return;
+  const entries = socialEntries.filter(entry => entry.category === activeSocialCategory);
+  if (!entries.length) {
+    const labels = {posts:'Posts',interactions:'Interactions','fan-moments':'Fan Moments'};
+    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>No updates yet</h3><p>New ' + labels[activeSocialCategory] + ' will appear here when added to the archive.</p></div>';
+    return;
+  }
+  socialGrid.innerHTML = entries.map(entry => {
+    const media = entry.image ? '<img class="social-update-media" src="' + entry.image + '" alt="' + (entry.imageAlt || entry.title || 'Atom Pariya social update').replace(/"/g,'&quot;') + '" loading="lazy">' : '<div class="social-update-placeholder" aria-hidden="true">♡</div>';
+    const title = (entry.title || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const description = (entry.description || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const platform = (entry.platform || 'Social media').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const date = (entry.date || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">View original post ↗</a>' : '';
+    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + '</span><time>' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + link + '</div></article>';
+  }).join('');
+}
+socialFilters.forEach(button => button.addEventListener('click', () => {
+  activeSocialCategory = button.dataset.socialFilter;
+  socialFilters.forEach(item => item.classList.toggle('active', item === button));
+  renderSocialUpdates();
+}));
+if (socialGrid) {
+  fetch('data/social-updates.json')
+    .then(response => { if (!response.ok) throw new Error('Social updates data unavailable'); return response.json(); })
+    .then(data => { socialEntries = Array.isArray(data) ? data : []; renderSocialUpdates(); })
+    .catch(() => renderSocialUpdates());
+}
