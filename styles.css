@@ -33,10 +33,12 @@ a { transition: color .2s ease, background .2s ease, border-color .2s ease, tran
   border-bottom: 1px solid var(--line);
 }
 .brand {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 14px;
   color: var(--cream); text-decoration: none; font-weight: 800;
-  letter-spacing: .04em; line-height: 1.1;
+  letter-spacing: .04em; line-height: 1.1; flex-shrink: 0;
 }
+.brand-logo { display: block; width: auto; height: 64px; max-width: min(230px, 42vw); object-fit: contain; object-position: left center; }
+.brand-label { color: var(--cream); font-size: 17px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 .brand-logo { display: block; width: auto; height: 48px; max-width: min(190px, 42vw); object-fit: contain; object-position: left center; }
 .peach { font-size: 30px; }
 nav { display: flex; gap: clamp(12px, 2.3vw, 30px); flex-wrap: wrap; }
@@ -118,6 +120,9 @@ footer p { max-width: 650px; margin: 10px auto; }
 
 @media (max-width: 760px) {
   .site-header { flex-wrap: wrap; }
+  .brand { gap: 9px; }
+  .brand-logo { height: 52px; max-width: min(175px, 42vw); }
+  .brand-label { font-size: 13px; }
   .menu-toggle { display: block; }
   nav { display: none; width: 100%; flex-direction: column; padding: 8px 0 12px; }
   nav.open { display: flex; }
