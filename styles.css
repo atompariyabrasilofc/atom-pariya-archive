@@ -341,3 +341,37 @@ main > section.profiles.page-hidden { display: none !important; }
 .social-table .social-table-muted { color:var(--muted); }
 .social-table a { color:var(--pink); white-space:nowrap; }
 @media(max-width:520px) { .social-toolbar { align-items:flex-start; } .social-update-categories { width:100%; } .social-view-switch { margin-left:auto; } }
+
+
+/* Peachy exclusive artwork: discourage casual saving and keep the mascot integrated. */
+.peachy-showcase img,
+.section-peachy {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+.peachy-showcase img { cursor: pointer; }
+.peachy-showcase img.expanded { transform: none; }
+.section-heading,
+.live-archive-heading { position: relative; }
+.section-peachy {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(38px, 5vw, 58px);
+  height: clamp(38px, 5vw, 58px);
+  object-fit: contain;
+  object-position: center;
+  margin: 0 2px 2px 18px;
+  opacity: .88;
+  filter: drop-shadow(0 4px 9px #0005);
+  pointer-events: none;
+}
+@media (max-width: 520px) {
+  .section-peachy {
+    width: 38px;
+    height: 38px;
+    margin-left: 10px;
+  }
+}
