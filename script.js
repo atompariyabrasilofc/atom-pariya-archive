@@ -137,6 +137,15 @@ document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
 const languageSelect = document.querySelector('#language-select');
 const translations = {
   en: {
+    "Social Updates":"Social Updates",
+    "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · SOCIAL MEDIA ARCHIVE",
+    "Posts":"Posts",
+    "Interactions":"Interactions",
+    "Fan Moments":"Fan Moments",
+    "Posts and moments shared by Atom across her official social media accounts.":"Posts and moments shared by Atom across her official social media accounts.",
+    "Coming soon":"Coming soon",
+    "Social media updates will appear here as they are added to the archive.":"Social media updates will appear here as they are added to the archive.",
+    "Lives are archived separately in Re:Peach.":"Lives are archived separately in Re:Peach.",
     "ATOM PARIYA ARCHIVE":"ATOM PARIYA ARCHIVE",
     "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.",
     "Aestiny":"Aestiny",
@@ -187,6 +196,15 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Open the complete YouTube playlist ↗"
   },
   pt: {
+    "Social Updates":"Atualizações nas redes",
+    "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · ARQUIVO DE REDES SOCIAIS",
+    "Posts":"Publicações",
+    "Interactions":"Interações",
+    "Fan Moments":"Momentos com fãs",
+    "Posts and moments shared by Atom across her official social media accounts.":"Publicações e momentos compartilhados por Atom em suas redes sociais oficiais.",
+    "Coming soon":"Em breve",
+    "Social media updates will appear here as they are added to the archive.":"As atualizações das redes sociais aparecerão aqui à medida que forem adicionadas ao arquivo.",
+    "Lives are archived separately in Re:Peach.":"As lives estão arquivadas separadamente no Re:Peach.",
     "ATOM PARIYA ARCHIVE":"ARQUIVO ATOM PARIYA",
     "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Criado com carinho por Atom Pariya Brasil. Projeto feito por fãs, sem afiliação ou endosso de Atom ou de seus representantes.",
     "Aestiny":"Aestiny",
@@ -237,6 +255,15 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir a playlist completa no YouTube ↗"
   },
   es: {
+    "Social Updates":"Actualizaciones en redes",
+    "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · ARCHIVO DE REDES SOCIALES",
+    "Posts":"Publicaciones",
+    "Interactions":"Interacciones",
+    "Fan Moments":"Momentos con fans",
+    "Posts and moments shared by Atom across her official social media accounts.":"Publicaciones y momentos compartidos por Atom en sus redes sociales oficiales.",
+    "Coming soon":"Próximamente",
+    "Social media updates will appear here as they are added to the archive.":"Las actualizaciones aparecerán aquí a medida que se añadan al archivo.",
+    "Lives are archived separately in Re:Peach.":"Los directos están archivados por separado en Re:Peach.",
     "ATOM PARIYA ARCHIVE":"ARCHIVO ATOM PARIYA",
     "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"Creado con cariño por Atom Pariya Brasil. Proyecto hecho por fans, sin afiliación ni respaldo de Atom o sus representantes.",
     "Aestiny":"Aestiny",
@@ -287,6 +314,15 @@ const translations = {
     "Open the complete YouTube playlist ↗":"Abrir la lista completa en YouTube ↗"
   },
   th: {
+    "Social Updates":"อัปเดตโซเชียล",
+    "ATOM · SOCIAL MEDIA ARCHIVE":"ATOM · คลังโซเชียลมีเดีย",
+    "Posts":"โพสต์",
+    "Interactions":"การมีปฏิสัมพันธ์",
+    "Fan Moments":"ช่วงเวลากับแฟน ๆ",
+    "Posts and moments shared by Atom across her official social media accounts.":"โพสต์และช่วงเวลาที่ Atom แชร์ผ่านบัญชีโซเชียลมีเดียทางการของเธอ",
+    "Coming soon":"เร็ว ๆ นี้",
+    "Social media updates will appear here as they are added to the archive.":"อัปเดตโซเชียลมีเดียจะแสดงที่นี่เมื่อมีการเพิ่มลงในคลัง",
+    "Lives are archived separately in Re:Peach.":"ไลฟ์ถูกจัดเก็บแยกไว้ใน Re:Peach",
     "ATOM PARIYA ARCHIVE":"ATOM PARIYA ARCHIVE",
     "Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.":"จัดทำด้วยความรักโดย Atom Pariya Brasil เป็นโปรเจกต์แฟนคลับ ไม่ได้มีส่วนเกี่ยวข้องหรือได้รับการรับรองจาก Atom หรือผู้แทนของเธอ",
     "Aestiny":"Aestiny",
