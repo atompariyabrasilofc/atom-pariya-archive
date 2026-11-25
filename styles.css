@@ -366,7 +366,8 @@ main > section.profiles.page-hidden { display: none !important; }
   margin: 0 2px 2px 18px;
   opacity: .88;
   filter: drop-shadow(0 4px 9px #0005);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: default;
 }
 @media (max-width: 520px) {
   .section-peachy {
