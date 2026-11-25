@@ -331,9 +331,16 @@ while (walker.nextNode()) {
 function setLanguage(lang) {
   const dictionary = translations[lang] || translations.pt;
   originalTextNodes.forEach(({node,value,key}) => {
-    const leading = value.match(/^\\s*/)?.[0] || '';
-    const trailing = value.match(/\\s*$/)?.[0] || '';
-    node.nodeValue = leading + (dictionary[key] || (lang === 'pt' ? key : key)) + trailing;
+    const leading = value.match(/^\s*/)?.[0] || '';
+    const trailing = value.match(/\s*$/)?.[0] || '';
+    let translated = dictionary[key] || key;
+    const liveLabel = key.match(/^LIVE ARCHIVE · (\d{2})( · PART 2| · VIIS)?$/);
+    if (liveLabel) {
+      const suffix = liveLabel[2] === ' · PART 2' ? (lang==='pt'?' · PARTE 2':lang==='es'?' · PARTE 2':lang==='th'?' · PART 2':' · PART 2') : liveLabel[2] || '';
+      const prefix = lang==='pt'?'ARQUIVO DE LIVES · ':lang==='es'?'ARCHIVO DE DIRECTOS · ':lang==='th'?'อาร์ไคฟ์ไลฟ์ · ':'LIVE ARCHIVE · ';
+      translated = prefix + liveLabel[1] + suffix;
+    }
+    node.nodeValue = leading + translated + trailing;
   });
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'th' ? 'th' : lang;
   document.title = lang === 'pt' ? 'Atom Pariya Archive | Brasil' : lang === 'es' ? 'Atom Pariya Archive | Brasil' : lang === 'th' ? 'Atom Pariya Archive | Brasil' : 'Atom Pariya Archive | Brazil';
