@@ -521,9 +521,10 @@ if (languageSelect) {
 setLanguage(initialLanguage);
 
 
-// Social Updates: category tabs and combined filters.
+// Social archive: filters, feed/table views and multilingual editorial fields.
 const socialGrid = document.querySelector('#social-updates-grid');
 const socialFilters = [...document.querySelectorAll('[data-social-filter]')];
+const socialViewButtons = [...document.querySelectorAll('[data-social-view]')];
 const socialPlatform = document.querySelector('#social-platform-filter');
 const socialSearch = document.querySelector('#social-search');
 const socialPeriod = document.querySelector('#social-period');
@@ -532,110 +533,133 @@ const socialFrom = document.querySelector('#social-from');
 const socialTo = document.querySelector('#social-to');
 const socialCount = document.querySelector('#social-results-count');
 let socialEntries = [];
-let activeSocialCategory = 'posts';
+let activeSocialCategory = 'all';
+let activeSocialView = 'feed';
 
-function socialDictionary() {
-  const lang = document.documentElement.lang === 'pt-BR' ? 'pt' : document.documentElement.lang;
-  return translations[lang] || translations.en;
+const socialLabels = {
+  pt:{all:'Todas as publicações',feed:'Feed',table:'Tabela',original:'Legenda original',translation:'Tradução · Português',context:'Contextualização',platform:'Plataforma',date:'Data',account:'Perfil',caption:'Legenda',hashtags:'Hashtags',metrics:'Métricas',source:'Origem',view:'Ver publicação original ↗',search:'Buscar legendas, traduções e hashtags...',showing:'Exibindo',results:'resultados',none:'Nenhuma publicação encontrada',empty:'As publicações aparecerão aqui quando forem adicionadas ao arquivo.',noContext:'',manual:'Cadastro manual',api:'API'},
+  en:{all:'All publications',feed:'Feed',table:'Table',original:'Original caption',translation:'Translation · Portuguese',context:'Context & notes',platform:'Platform',date:'Date',account:'Account',caption:'Caption',hashtags:'Hashtags',metrics:'Metrics',source:'Source',view:'View original post ↗',search:'Search captions, translations and hashtags...',showing:'Showing',results:'results',none:'No publications found',empty:'New publications will appear here when added to the archive.',noContext:'',manual:'Manual entry',api:'API'},
+  es:{all:'Todas las publicaciones',feed:'Feed',table:'Tabla',original:'Texto original',translation:'Traducción · Portugués',context:'Contexto y notas',platform:'Plataforma',date:'Fecha',account:'Perfil',caption:'Texto',hashtags:'Hashtags',metrics:'Métricas',source:'Origen',view:'Ver publicación original ↗',search:'Buscar textos, traducciones y hashtags...',showing:'Mostrando',results:'resultados',none:'No se encontraron publicaciones',empty:'Las publicaciones aparecerán aquí cuando se añadan al archivo.',noContext:'',manual:'Registro manual',api:'API'},
+  th:{all:'โพสต์ทั้งหมด',feed:'ฟีด',table:'ตาราง',original:'แคปชันต้นฉบับ',translation:'คำแปล · ภาษาโปรตุเกส',context:'บริบทและหมายเหตุ',platform:'แพลตฟอร์ม',date:'วันที่',account:'บัญชี',caption:'แคปชัน',hashtags:'แฮชแท็ก',metrics:'สถิติ',source:'แหล่งที่มา',view:'ดูโพสต์ต้นฉบับ ↗',search:'ค้นหาแคปชัน คำแปล และแฮชแท็ก...',showing:'แสดง',results:'รายการ',none:'ไม่พบโพสต์',empty:'โพสต์ใหม่จะแสดงที่นี่เมื่อถูกเพิ่มลงในอาร์ไคฟ์',noContext:'',manual:'เพิ่มด้วยตนเอง',api:'API'}
+};
+function socialLang(){const l=document.documentElement.lang;return l==='pt-BR'?'pt':(socialLabels[l]?l:'en');}
+function socialText(key){return socialLabels[socialLang()][key]||socialLabels.en[key]||key;}
+function socialEscape(value){return String(value??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function socialHashtags(entry){
+  const source=String(entry.original_caption??entry.caption??entry.description??'');
+  const found=source.match(/#[\p{L}\p{M}\p{N}_]+/gu)||[];
+  return [...new Set([...(Array.isArray(entry.hashtags)?entry.hashtags:[]),...found])];
 }
-function localDateString(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return year + '-' + month + '-' + day;
+function localDateString(date){const year=date.getFullYear();const month=String(date.getMonth()+1).padStart(2,'0');const day=String(date.getDate()).padStart(2,'0');return year+'-'+month+'-'+day;}
+function populateSocialPlatforms(){
+  if(!socialPlatform)return;
+  const known=['Instagram','TikTok','X','Facebook','Weibo','YouTube','Threads'];
+  const platforms=[...new Set([...known,...socialEntries.map(entry=>entry.platform).filter(Boolean)])].sort((a,b)=>known.indexOf(a)-known.indexOf(b));
+  const selected=socialPlatform.value||'all';
+  socialPlatform.innerHTML='<option value="all">'+(socialLang()==='pt'?'Todas as plataformas':socialLang()==='es'?'Todas las plataformas':socialLang()==='th'?'ทุกแพลตฟอร์ม':'All platforms')+'</option>'+platforms.map(platform=>'<option value="'+socialEscape(platform)+'">'+socialEscape(platform)+'</option>').join('');
+  socialPlatform.value=platforms.includes(selected)?selected:'all';
 }
-function populateSocialPlatforms() {
-  if (!socialPlatform) return;
-  const dictionary = socialDictionary();
-  const known = ['Instagram','TikTok','X','Facebook','Weibo','YouTube','Threads'];
-  const extra = socialEntries.map(entry => entry.platform).filter(Boolean);
-  const platforms = [...new Set([...known, ...extra])].sort((a,b) => known.indexOf(a) - known.indexOf(b));
-  const selected = socialPlatform.value || 'all';
-  socialPlatform.innerHTML = '<option value="all">' + dictionary['All platforms'] + '</option>' +
-    platforms.map(platform => '<option value="' + platform.replace(/"/g,'&quot;') + '">' + platform + '</option>').join('');
-  socialPlatform.value = platforms.includes(selected) ? selected : 'all';
+function socialMetrics(entry){
+  const m=entry.metrics||{};
+  return [['likes',entry.likes??m.likes],['comments',entry.comments??m.comments],['replies',entry.replies??m.replies],['views',entry.views??m.views]].filter(item=>item[1]!==undefined&&item[1]!==null&&item[1]!=='');
 }
-function renderSocialUpdates() {
-  if (!socialGrid) return;
-  const dictionary = socialDictionary();
-  const today = new Date();
-  const todayString = localDateString(today);
-  const period = socialPeriod?.value || 'all';
-  let startDate = '';
-  let endDate = '';
-  if (period === 'today') startDate = endDate = todayString;
-  if (period === '7d') { const d = new Date(today); d.setDate(d.getDate()-6); startDate = localDateString(d); endDate = todayString; }
-  if (period === '30d') { const d = new Date(today); d.setDate(d.getDate()-29); startDate = localDateString(d); endDate = todayString; }
-  if (period === '90d') { const d = new Date(today); d.setDate(d.getDate()-89); startDate = localDateString(d); endDate = todayString; }
-  if (period === 'year') startDate = today.getFullYear() + '-01-01', endDate = todayString;
-  if (period === 'custom') { startDate = socialFrom?.value || ''; endDate = socialTo?.value || ''; }
-  const query = (socialSearch?.value || '').trim().toLocaleLowerCase();
-  let entries = socialEntries.filter(entry => {
-    if (entry.category !== activeSocialCategory) return false;
-    if (socialPlatform?.value && socialPlatform.value !== 'all' && entry.platform !== socialPlatform.value) return false;
-    const searchable = [entry.title, entry.description, entry.platform, entry.category].join(' ').toLocaleLowerCase();
-    if (query && !searchable.includes(query)) return false;
-    const date = entry.publicationDate || entry.date || '';
-    if (startDate && (!date || date < startDate)) return false;
-    if (endDate && (!date || date > endDate)) return false;
+function socialEntryDate(entry){return entry.published_at||entry.publicationDate||entry.date||'';}
+function renderSocialUpdates(){
+  if(!socialGrid)return;
+  const today=new Date(),todayString=localDateString(today),period=socialPeriod?.value||'all';
+  let startDate='',endDate='';
+  if(period==='today')startDate=endDate=todayString;
+  if(period==='7d'){const d=new Date(today);d.setDate(d.getDate()-6);startDate=localDateString(d);endDate=todayString;}
+  if(period==='30d'){const d=new Date(today);d.setDate(d.getDate()-29);startDate=localDateString(d);endDate=todayString;}
+  if(period==='90d'){const d=new Date(today);d.setDate(d.getDate()-89);startDate=localDateString(d);endDate=todayString;}
+  if(period==='year'){startDate=today.getFullYear()+'-01-01';endDate=todayString;}
+  if(period==='custom'){startDate=socialFrom?.value||'';endDate=socialTo?.value||'';}
+  const query=(socialSearch?.value||'').trim().toLocaleLowerCase();
+  let entries=socialEntries.filter(entry=>{
+    if(activeSocialCategory!=='all'&&entry.category!==activeSocialCategory)return false;
+    if(socialPlatform?.value&&socialPlatform.value!=='all'&&entry.platform!==socialPlatform.value)return false;
+    const hashtags=socialHashtags(entry);
+    const searchable=[entry.title,entry.description,entry.original_caption,entry.caption,entry.translated_caption,entry.translation,entry.contextualization,entry.account,entry.profile,entry.platform,entry.category,...hashtags].join(' ').toLocaleLowerCase();
+    if(query&&!searchable.includes(query))return false;
+    const date=String(socialEntryDate(entry)).slice(0,10);
+    if(startDate&&(!date||date<startDate))return false;
+    if(endDate&&(!date||date>endDate))return false;
     return true;
   });
-  entries.sort((a,b) => {
-    const dateA = a.publicationDate || a.date || '';
-    const dateB = b.publicationDate || b.date || '';
-    return socialSort?.value === 'oldest' ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
-  });
-  if (socialCount) socialCount.textContent = dictionary['Showing'] + ' ' + entries.length + ' ' + dictionary['results'];
-  if (!entries.length) {
-    const title = socialEntries.some(entry => entry.category === activeSocialCategory) ? dictionary['No results found'] : dictionary['No updates yet'];
-    const message = socialEntries.some(entry => entry.category === activeSocialCategory) ? dictionary['Try changing your filters or search terms.'] : dictionary['New updates will appear here when added to the archive.'];
-    socialGrid.innerHTML = '<div class="empty-state social-empty"><span>♡</span><h3>' + title + '</h3><p>' + message + '</p></div>';
+  entries.sort((a,b)=>{const da=socialEntryDate(a),db=socialEntryDate(b);return socialSort?.value==='oldest'?String(da).localeCompare(String(db)):String(db).localeCompare(String(da));});
+  if(socialCount)socialCount.textContent=socialText('showing')+' '+entries.length+' '+socialText('results');
+  if(!entries.length){
+    const hasCategory=socialEntries.some(entry=>activeSocialCategory==='all'||entry.category===activeSocialCategory);
+    const title=hasCategory?socialText('none'):(socialLang()==='pt'?'Ainda não há publicações':socialLang()==='es'?'Aún no hay publicaciones':socialLang()==='th'?'ยังไม่มีโพสต์':'No publications yet');
+    socialGrid.innerHTML='<div class="empty-state social-empty"><span>♡</span><h3>'+socialEscape(title)+'</h3><p>'+socialEscape(socialText('empty'))+'</p></div>';
     return;
   }
-  socialGrid.innerHTML = entries.map(entry => {
-    const escapeText = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    const mediaSource = entry.image || entry.thumbnail || '';
-    const media = mediaSource ? '<img class="social-update-media" src="' + escapeText(mediaSource) + '" alt="' + escapeText(entry.imageAlt || entry.title || 'Atom Pariya social update') + '" loading="lazy">' : '<div class="social-update-placeholder" aria-hidden="true">♡</div>';
-    const title = escapeText(entry.title || '');
-    const description = escapeText(entry.description || '');
-    const platform = escapeText(entry.platform || dictionary['Social media']);
-    const date = escapeText(entry.publicationDate || entry.date || '');
-    const type = entry.mediaType === 'reel' ? (dictionary['Reel'] || 'Reel') : entry.mediaType === 'post' ? (dictionary['Post'] || 'Post') : '';
-    const metrics = entry.metrics || {};
-    const metricItems = [
-      ['likes', dictionary['Likes'] || 'Likes', entry.likes ?? metrics.likes],
-      ['comments', dictionary['Comments'] || 'Comments', entry.comments ?? metrics.comments],
-      ['replies', dictionary['Replies'] || 'Replies', entry.replies ?? metrics.replies],
-      ['views', dictionary['Views'] || 'Views', entry.views ?? metrics.views]
-    ].filter(item => item[2] !== undefined && item[2] !== null && item[2] !== '');
-    const metricMarkup = metricItems.length ? '<div class="social-update-metrics">' + metricItems.map(item => '<span><strong>' + escapeText(Number(item[2]).toLocaleString()) + '</strong> ' + escapeText(item[1]) + '</span>').join('') + '</div>' : '';
-    const link = entry.url ? '<a class="social-update-link" href="' + escapeText(entry.url) + '" target="_blank" rel="noopener noreferrer">' + dictionary['View original post ↗'] + '</a>' : '';
-    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + (type ? ' · ' + escapeText(type) : '') + '</span><time datetime="' + date + '">' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + metricMarkup + link + '</div></article>';
+  if(activeSocialView==='table'){
+    socialGrid.innerHTML='<div class="social-table-wrap"><table class="social-table"><thead><tr>'+['platform','date','account','original','translation','context','hashtags','metrics','source'].map(k=>'<th>'+socialEscape(socialText(k==='original'?'caption':k))+'</th>').join('')+'</tr></thead><tbody>'+entries.map(entry=>{
+      const tags=socialHashtags(entry).map(tag=>socialEscape(tag)).join(' ');
+      const metrics=socialMetrics(entry).map(([k,v])=>socialEscape(k)+': '+socialEscape(Number(v).toLocaleString())).join(' · ');
+      const url=entry.url||entry.permalink||'';
+      return '<tr><td>'+socialEscape(entry.platform||'—')+'</td><td>'+socialEscape(socialEntryDate(entry)||'—')+'</td><td>'+socialEscape(entry.account||entry.profile||'—')+'</td><td>'+socialEscape(entry.original_caption??entry.caption??entry.description??'—')+'</td><td>'+socialEscape(entry.translated_caption??entry.translation??'—')+'</td><td>'+socialEscape(entry.contextualization??entry.context??'—')+'</td><td>'+tags+'</td><td>'+metrics+'</td><td>'+(url?'<a href="'+socialEscape(url)+'" target="_blank" rel="noopener noreferrer">'+socialEscape(socialText('view'))+'</a>':'—')+'</td></tr>';
+    }).join('')+'</tbody></table></div>';
+    return;
+  }
+  socialGrid.innerHTML=entries.map(entry=>{
+    const mediaSource=entry.image||entry.thumbnail||entry.media_url||'';
+    const media=mediaSource?'<img class="social-update-media" src="'+socialEscape(mediaSource)+'" alt="'+socialEscape(entry.imageAlt||entry.title||'Atom Pariya social update')+'" loading="lazy">':'<div class="social-update-placeholder" aria-hidden="true">♡</div>';
+    const platform=socialEscape(entry.platform||'Social media');
+    const date=socialEscape(socialEntryDate(entry)||'');
+    const account=entry.account||entry.profile||'';
+    const original=entry.original_caption??entry.caption??entry.description??'';
+    const translation=entry.translated_caption??entry.translation??'';
+    const context=entry.contextualization??entry.context??'';
+    const hashtags=socialHashtags(entry);
+    const metrics=socialMetrics(entry);
+    const metricMarkup=metrics.length?'<div class="social-update-metrics">'+metrics.map(([k,v])=>'<span><strong>'+socialEscape(Number(v).toLocaleString())+'</strong> '+socialEscape(k)+'</span>').join('')+'</div>':'';
+    const tagMarkup=hashtags.length?'<div class="social-hashtags" aria-label="'+socialEscape(socialText('hashtags'))+'">'+hashtags.map(tag=>'<button type="button" class="social-hashtag" data-hashtag="'+socialEscape(tag)+'">'+socialEscape(tag)+'</button>').join('')+'</div>':'';
+    const link=entry.url||entry.permalink||'';
+    const source=entry.source?'<p class="social-source-note">'+socialEscape(socialText('source'))+': '+socialEscape(entry.source==='api'?socialText('api'):socialText('manual'))+'</p>':'';
+    const originalMarkup=original?'<section class="social-caption-block"><span class="social-caption-label">'+socialEscape(socialText('original'))+'</span><p class="social-caption-text">'+socialEscape(original)+'</p></section>':'';
+    const translationMarkup=translation?'<section class="social-translation-panel"><span class="social-caption-label">'+socialEscape(socialText('translation'))+'</span><p class="social-caption-text">'+socialEscape(translation)+'</p></section>':'';
+    const contextMarkup=context?'<section class="social-context-panel"><span class="social-caption-label">'+socialEscape(socialText('context'))+'</span><p class="social-caption-text">'+socialEscape(context)+'</p></section>':'';
+    return '<article class="social-update-card">'+media+'<div class="social-update-body"><div class="social-update-meta"><span>'+platform+'</span><time datetime="'+date+'">'+date+'</time></div>'+(account?'<p class="social-account">'+socialEscape(account)+'</p>':'')+(entry.title?'<h3>'+socialEscape(entry.title)+'</h3>':'')+originalMarkup+translationMarkup+contextMarkup+tagMarkup+metricMarkup+(link?'<a class="social-update-link" href="'+socialEscape(link)+'" target="_blank" rel="noopener noreferrer">'+socialEscape(socialText('view'))+'</a>':'')+source+'</div></article>';
   }).join('');
 }
-socialFilters.forEach(button => button.addEventListener('click', () => {
-  activeSocialCategory = button.dataset.socialFilter;
-  socialFilters.forEach(item => item.classList.toggle('active', item === button));
+socialFilters.forEach(button=>button.addEventListener('click',()=>{
+  activeSocialCategory=button.dataset.socialFilter;
+  socialFilters.forEach(item=>item.classList.toggle('active',item===button));
   renderSocialUpdates();
 }));
-[socialPlatform, socialSearch, socialPeriod, socialSort, socialFrom, socialTo].forEach(control => {
-  control?.addEventListener('input', renderSocialUpdates);
-  control?.addEventListener('change', renderSocialUpdates);
+socialViewButtons.forEach(button=>button.addEventListener('click',()=>{
+  activeSocialView=button.dataset.socialView;
+  socialViewButtons.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active));});
+  renderSocialUpdates();
+}));
+socialGrid?.addEventListener('click',event=>{
+  const button=event.target.closest('[data-hashtag]');
+  if(!button||!socialSearch)return;
+  socialSearch.value=button.dataset.hashtag;
+  renderSocialUpdates();
+  socialSearch.focus();
 });
-socialPeriod?.addEventListener('change', () => {
-  const custom = socialPeriod.value === 'custom';
-  document.querySelector('.social-custom-dates')?.classList.toggle('visible', custom);
+[socialPlatform,socialSearch,socialPeriod,socialSort,socialFrom,socialTo].forEach(control=>{
+  control?.addEventListener('input',renderSocialUpdates);
+  control?.addEventListener('change',renderSocialUpdates);
 });
-if (socialGrid) {
-  fetch('data/social-updates.json')
-    .then(response => { if (!response.ok) throw new Error('Social updates data unavailable'); return response.json(); })
-    .then(data => { socialEntries = Array.isArray(data) ? data : []; populateSocialPlatforms(); renderSocialUpdates(); })
-    .catch(() => { socialEntries = []; populateSocialPlatforms(); renderSocialUpdates(); });
-}
-function refreshSocialFilterLanguage() {
-  const dictionary = socialDictionary();
-  if (socialSearch) socialSearch.placeholder = dictionary['Search titles and descriptions'];
+socialPeriod?.addEventListener('change',()=>{
+  document.querySelector('.social-custom-dates')?.classList.toggle('visible',socialPeriod.value==='custom');
+});
+function refreshSocialFilterLanguage(){
+  if(socialSearch)socialSearch.placeholder=socialText('search');
+  const allButton=socialFilters.find(button=>button.dataset.socialFilter==='all');
+  if(allButton)allButton.textContent=socialText('all');
+  socialViewButtons.forEach(button=>button.textContent=socialText(button.dataset.socialView));
   populateSocialPlatforms();
   renderSocialUpdates();
 }
-languageSelect?.addEventListener('change', refreshSocialFilterLanguage);
+if(socialGrid){
+  fetch('data/social-updates.json').then(response=>{if(!response.ok)throw new Error('Social archive data unavailable');return response.json();})
+    .then(data=>{socialEntries=Array.isArray(data)?data:[];populateSocialPlatforms();renderSocialUpdates();})
+    .catch(()=>{socialEntries=[];populateSocialPlatforms();renderSocialUpdates();});
+}
+languageSelect?.addEventListener('change',refreshSocialFilterLanguage);
+refreshSocialFilterLanguage();
