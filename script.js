@@ -49,7 +49,7 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
   btn.classList.add('active');
 }));
 
-// Peachy artwork interaction and rotation. Preload the artwork for reliable mobile display.
+// Peachy artwork rotation — direct source swap for reliable Safari/Android behavior.
 const peachyImages = [
   ...[6,7,8,26,27,28,29,30,31,32,37,39,41].map(n => `1.%20assets/Peachy/Padrao/${n}.png`),
   ...[1,2,3,4,12,13,14,15].map(n => `1.%20assets/Peachy/Brasil/${n}.png`)
@@ -60,28 +60,17 @@ if (peachyImage && peachyImages.length > 1) {
   let holdTimer = null;
   let longPress = false;
   let rotationTimer = null;
-  peachyImages.forEach(src => { const preload = new Image(); preload.src = src; });
 
   function showNextPeachy() {
     peachyIndex = (peachyIndex + 1) % peachyImages.length;
-    const nextSrc = peachyImages[peachyIndex];
     peachyImage.classList.add('changing');
-    const reveal = () => {
-      peachyImage.src = nextSrc;
-      peachyImage.classList.remove('changing');
-    };
-    const probe = new Image();
-    probe.onload = reveal;
-    probe.onerror = () => {
-      peachyImage.classList.remove('changing');
-      console.warn('Não foi possível carregar a arte Peachy:', nextSrc);
-    };
-    probe.src = nextSrc;
+    peachyImage.src = peachyImages[peachyIndex];
+    peachyImage.alt = `Mascote Peachy — arte ${peachyIndex + 1} de ${peachyImages.length}`;
+    window.setTimeout(() => peachyImage.classList.remove('changing'), 220);
   }
-
   function startRotation() {
     if (rotationTimer) window.clearInterval(rotationTimer);
-    rotationTimer = window.setInterval(showNextPeachy, 3500);
+    rotationTimer = window.setInterval(showNextPeachy, 3000);
   }
   function startHold() {
     longPress = false;
