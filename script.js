@@ -593,13 +593,24 @@ function renderSocialUpdates() {
     return;
   }
   socialGrid.innerHTML = entries.map(entry => {
-    const media = entry.image ? '<img class="social-update-media" src="' + entry.image + '" alt="' + (entry.imageAlt || entry.title || 'Atom Pariya social update').replace(/"/g,'&quot;') + '" loading="lazy">' : '<div class="social-update-placeholder" aria-hidden="true">♡</div>';
-    const title = (entry.title || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const description = (entry.description || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const platform = (entry.platform || dictionary['Social media']).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const date = (entry.publicationDate || entry.date || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const link = entry.url ? '<a class="social-update-link" href="' + entry.url.replace(/"/g,'%22') + '" target="_blank" rel="noopener noreferrer">' + dictionary['View original post ↗'] + '</a>' : '';
-    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + '</span><time datetime="' + date + '">' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + link + '</div></article>';
+    const escapeText = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const mediaSource = entry.image || entry.thumbnail || '';
+    const media = mediaSource ? '<img class="social-update-media" src="' + escapeText(mediaSource) + '" alt="' + escapeText(entry.imageAlt || entry.title || 'Atom Pariya social update') + '" loading="lazy">' : '<div class="social-update-placeholder" aria-hidden="true">♡</div>';
+    const title = escapeText(entry.title || '');
+    const description = escapeText(entry.description || '');
+    const platform = escapeText(entry.platform || dictionary['Social media']);
+    const date = escapeText(entry.publicationDate || entry.date || '');
+    const type = entry.mediaType === 'reel' ? (dictionary['Reel'] || 'Reel') : entry.mediaType === 'post' ? (dictionary['Post'] || 'Post') : '';
+    const metrics = entry.metrics || {};
+    const metricItems = [
+      ['likes', dictionary['Likes'] || 'Likes', entry.likes ?? metrics.likes],
+      ['comments', dictionary['Comments'] || 'Comments', entry.comments ?? metrics.comments],
+      ['replies', dictionary['Replies'] || 'Replies', entry.replies ?? metrics.replies],
+      ['views', dictionary['Views'] || 'Views', entry.views ?? metrics.views]
+    ].filter(item => item[2] !== undefined && item[2] !== null && item[2] !== '');
+    const metricMarkup = metricItems.length ? '<div class="social-update-metrics">' + metricItems.map(item => '<span><strong>' + escapeText(Number(item[2]).toLocaleString()) + '</strong> ' + escapeText(item[1]) + '</span>').join('') + '</div>' : '';
+    const link = entry.url ? '<a class="social-update-link" href="' + escapeText(entry.url) + '" target="_blank" rel="noopener noreferrer">' + dictionary['View original post ↗'] + '</a>' : '';
+    return '<article class="social-update-card">' + media + '<div class="social-update-body"><div class="social-update-meta"><span>' + platform + (type ? ' · ' + escapeText(type) : '') + '</span><time datetime="' + date + '">' + date + '</time></div><h3>' + title + '</h3><p>' + description + '</p>' + metricMarkup + link + '</div></article>';
   }).join('');
 }
 socialFilters.forEach(button => button.addEventListener('click', () => {
