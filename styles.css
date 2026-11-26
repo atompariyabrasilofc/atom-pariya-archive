@@ -614,3 +614,16 @@ main > section.profiles.page-hidden { display: none !important; }
   .section-peachy { width:50px; height:50px; }
   .mascot-layout img { max-width:210px; }
 }
+
+
+/* Peachy interaction guard: tapping changes artwork; it must not zoom. */
+.peachy-showcase img,
+.peachy-showcase img:active,
+.peachy-showcase img.expanded {
+  transform: none !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: manipulation;
+}
