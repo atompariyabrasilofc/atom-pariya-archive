@@ -500,3 +500,23 @@ main > section.profiles.page-hidden { display: none !important; }
 .knowledge-card p:not(.eyebrow) { margin: 0; color: #d0c5ce; }
 .knowledge-card .eyebrow { margin-bottom: 7px; }
 @media (max-width: 650px) { .knowledge-grid { grid-template-columns: 1fr; } }
+
+/* Fandom naming history and Peachy mascot */
+.fandom-story { max-width: 980px; }
+.fandom-lead { font-size: 1.08rem; line-height: 1.75; color: var(--text); margin: 0 0 24px; }
+.fandom-name-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.fandom-era { height: 100%; }
+.fandom-era h3 { font-size: 1.35rem; }
+.fandom-current { border-color: rgba(219,153,190,.55); }
+.fandom-etymology { margin: 12px 0 !important; letter-spacing: .08em; color: var(--accent) !important; }
+.fandom-era .text-link { display: inline-block; margin-top: 12px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.fandom-welcome { margin: 24px 0 30px; padding: 22px 24px; border-left: 2px solid var(--accent); background: var(--panel); border-radius: 0 14px 14px 0; }
+.fandom-welcome p { line-height: 1.8; }
+.fandom-welcome p:last-child { margin-bottom: 0; }
+.fandom-mascot { margin-top: 28px; }
+.fandom-mascot .section-heading { margin-bottom: 14px; }
+.fandom-mascot h3 { font-size: 1.5rem; }
+.mascot-layout { display: grid; grid-template-columns: minmax(150px,250px) minmax(0,1fr); gap: 24px; align-items: center; }
+.mascot-layout img { display: block; width: 100%; max-width: 230px; height: auto; object-fit: contain; }
+.mascot-layout p { line-height: 1.8; }
+@media (max-width: 650px) { .fandom-name-list { grid-template-columns: 1fr; } .mascot-layout { grid-template-columns: 1fr; } .mascot-layout img { max-width: 180px; margin: 0 auto; } }
