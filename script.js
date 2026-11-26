@@ -130,8 +130,10 @@ if (liveGrid && liveSort) {
       if (!dateB) return -1;
       const comparison = dateA.localeCompare(dateB);
       if (comparison !== 0) return direction === 'newest' ? -comparison : comparison;
-      // For the same date, preserve the original sequence (Part 1 before Part 2).
-      return Number(a.dataset.archiveOrder) - Number(b.dataset.archiveOrder);
+      // Same-day ordering can be customized for related recordings; otherwise preserve archive order.
+      const orderA = a.dataset.dateOrder !== undefined ? Number(a.dataset.dateOrder) : Number(a.dataset.archiveOrder);
+      const orderB = b.dataset.dateOrder !== undefined ? Number(b.dataset.dateOrder) : Number(b.dataset.archiveOrder);
+      return orderA - orderB;
     });
     sorted.forEach(card => liveGrid.appendChild(card));
   }
