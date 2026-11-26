@@ -380,24 +380,6 @@
     "label": "21/09/2017"
   },
   {
-    "id": "atom-timeline-22",
-    "title": "Registro musical 22",
-    "kind": "Registro musical",
-    "genre": "Música · Cover / MV",
-    "date": null,
-    "dateLabel": "Data a confirmar",
-    "videoId": "mq4pYqaClB0",
-    "sourceOrder": 21,
-    "image": "https://i.ytimg.com/vi/mq4pYqaClB0/hqdefault.jpg",
-    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
-    "links": [
-      {
-        "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/mq4pYqaClB0?is=mxku1HRk2lIBY5ar"
-      }
-    ]
-  },
-  {
     "id": "social-death-vote",
     "title": "Social Death Vote",
     "kind": "Série",
