@@ -565,3 +565,15 @@ main > section.profiles.page-hidden { display: none !important; }
   .profile-card { padding: 14px; }
   .portrait-atom { width: 108px; height: 144px; }
 }
+
+
+/* Navigation reliability: keep the mobile menu above page content and clickable. */
+.site-header { position: relative; z-index: 50; }
+.site-header nav { position: relative; z-index: 51; }
+.site-header nav a { display: inline-flex; align-items: center; min-height: 36px; position: relative; z-index: 52; }
+@media (max-width: 760px) {
+  .site-header nav { width: 100%; }
+  .site-header nav.open { display: flex !important; visibility: visible; opacity: 1; pointer-events: auto; }
+  .site-header nav a { width: 100%; padding: 9px 8px; }
+  .menu-toggle { position: relative; z-index: 53; }
+}
