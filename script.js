@@ -6,48 +6,49 @@ const hero=document.querySelector('.hero');
 const pageSections=[...document.querySelectorAll('main > section')].filter(section=>section!==profileHome && !section.classList.contains('hero') && !section.classList.contains('intro'));
 
 function showPage(target) {
-  const isHome = target === 'home-cards' || !target;
+  const validTarget = target && (target === 'home-cards' || pageSections.some(section => section.id === target));
+  const page = validTarget ? target : 'home-cards';
+  const isHome = page === 'home-cards';
   hero?.classList.toggle('page-hidden', !isHome);
-  profileHome.classList.toggle('page-active', isHome);
-  profileHome.classList.toggle('page-hidden', !isHome);
+  profileHome?.classList.toggle('page-active', isHome);
+  profileHome?.classList.toggle('page-hidden', !isHome);
   pageSections.forEach(section => {
-    const active = !isHome && section.id === target;
+    const active = !isHome && section.id === page;
     section.classList.toggle('page-active', active);
     section.classList.toggle('page-hidden', !active);
   });
-  nav.querySelectorAll('a').forEach(link => {
-    const active = link.getAttribute('href') === (isHome ? '#home-cards' : '#'+target);
+  nav?.querySelectorAll('a').forEach(link => {
+    const active = link.getAttribute('href') === '#'+page;
     if (active) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');
   });
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'auto'});
 }
 
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
+nav?.addEventListener('click', event => {
+  const link=event.target.closest('a[href^="#"]');
+  if(!link)return;
+  const target=link.getAttribute('href').slice(1);
+  if(!document.getElementById(target))return;
   event.preventDefault();
-  const target = link.getAttribute('href').slice(1);
   showPage(target);
   history.replaceState(null,'','#'+target);
   nav.classList.remove('open');
-  toggle.setAttribute('aria-expanded','false');
-}));
-brand.addEventListener('click', event => {
+  toggle?.setAttribute('aria-expanded','false');
+});
+brand?.addEventListener('click', event => {
   event.preventDefault();
   showPage('home-cards');
   history.replaceState(null,'','#home-cards');
-  nav.classList.remove('open');
-  toggle.setAttribute('aria-expanded','false');
+  nav?.classList.remove('open');
+  toggle?.setAttribute('aria-expanded','false');
 });
-toggle.addEventListener('click',()=>{
-  const open=nav.classList.toggle('open');
+toggle?.addEventListener('click',()=>{
+  const open=nav?.classList.toggle('open') ?? false;
   toggle.setAttribute('aria-expanded',String(open));
 });
+window.addEventListener('hashchange',()=>showPage(location.hash.slice(1)));
 showPage(location.hash ? location.hash.slice(1) : 'home-cards');
-
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-}));
 
 // Peachy artwork protection and small integrated mascots across archive sections.
 const peachyAsset = '1.%20assets/Peachy/Padrao/6.png';
