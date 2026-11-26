@@ -684,13 +684,5 @@ if(timelineMusicalEntries){
       const link=item.links?.[0]?.url||'#';
       return '<article class="timeline-entry timeline-musical-entry" data-source-order="'+item.sourceOrder+'"><div class="timeline-entry-content"><h3><a href="'+detail+'" target="_blank" rel="noopener noreferrer" data-musical-title="'+escapeHTML(item.id)+'">'+escapeHTML(item.title)+'</a></h3><a class="timeline-musical-image" href="'+detail+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir detalhes de '+escapeHTML(item.title)+'"><img src="'+escapeHTML(item.image)+'" alt="Imagem de '+escapeHTML(item.title)+'" loading="lazy"></a><p class="work-catalogue-date">Data de lançamento: '+escapeHTML(item.dateLabel||'Data a confirmar')+'</p><p class="work-catalogue-kind">'+escapeHTML(item.kind)+' · '+escapeHTML(item.genre)+'</p><p class="work-catalogue-description">'+escapeHTML(item.description)+'</p><a class="timeline-watch-link" href="'+escapeHTML(link)+'" target="_blank" rel="noopener noreferrer">Assistir ao vídeo no YouTube ↗</a></div></article>';
     }).join('');
-    records.forEach(async item=>{
-      try{
-        const response=await fetch('https://www.youtube.com/oembed?url='+encodeURIComponent('https://www.youtube.com/watch?v='+item.videoId)+'&format=json');
-        if(!response.ok)return;
-        const meta=await response.json();
-        if(meta.title)timelineMusicalEntries.querySelectorAll('[data-musical-title="'+item.id+'"]').forEach(a=>a.textContent=meta.title);
-      }catch(error){}
-    });
   }).catch(()=>{timelineMusicalEntries.innerHTML='<p class="muted">Não foi possível carregar os registros musicais agora.</p>';});
 }
