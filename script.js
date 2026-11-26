@@ -673,20 +673,20 @@ document.querySelectorAll('[data-work-detail]').forEach(button=>button.addEventL
 document.querySelector('[data-work-back]')?.addEventListener('click',()=>{careerPanel.hidden=true;careerTimeline.hidden=false;careerTimeline.scrollIntoView({behavior:'smooth',block:'start'});});
 
 
-// Works catalogue: cards link to a dedicated detail page; YouTube oEmbed supplies public titles.
-const worksCatalogue=document.querySelector('#works-catalogue');
-if(worksCatalogue){
+// Music covers are part of the career timeline, not a separate site section.
+const timelineCovers=document.querySelector('#timeline-covers');
+if(timelineCovers){
   fetch('data/works.json').then(r=>{if(!r.ok)throw new Error('Works data unavailable');return r.json();}).then(items=>{
+    const covers=items.filter(item=>item.kind==='Cover musical');
     const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-    worksCatalogue.innerHTML=items.map(item=>{
+    timelineCovers.innerHTML=covers.map(item=>{
       const detail='work.html?id='+encodeURIComponent(item.id);
-      const date=item.dateLabel||'Data de lançamento em verificação no YouTube';
-      return '<article class="work-catalogue-card"><p class="work-catalogue-kind">'+escapeHTML(item.kind)+' · '+escapeHTML(item.genre)+'</p><h3><a href="'+detail+'" target="_blank" rel="noopener noreferrer" data-work-title="'+escapeHTML(item.id)+'">'+escapeHTML(item.title)+'</a></h3><a class="work-catalogue-image" href="'+detail+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir detalhes de '+escapeHTML(item.title)+'"><img src="'+escapeHTML(item.image)+'" alt="Capa de '+escapeHTML(item.title)+'" loading="lazy"></a><p class="work-catalogue-date">'+escapeHTML(date)+'</p><p class="work-catalogue-description">'+escapeHTML(item.description)+'</p><a class="work-catalogue-watch" href="'+escapeHTML(item.playlist||item.links?.[0]?.url||'#')+'" target="_blank" rel="noopener noreferrer">'+(item.playlist?'Assistir à obra completa':'Assistir ao vídeo no YouTube')+' ↗</a></article>';
+      return '<article class="work-catalogue-card"><p class="work-catalogue-kind">'+escapeHTML(item.kind)+' · '+escapeHTML(item.genre)+'</p><h3><a href="'+detail+'" target="_blank" rel="noopener noreferrer" data-work-title="'+escapeHTML(item.id)+'">'+escapeHTML(item.title)+'</a></h3><a class="work-catalogue-image" href="'+detail+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir detalhes de '+escapeHTML(item.title)+'"><img src="'+escapeHTML(item.image)+'" alt="Capa de '+escapeHTML(item.title)+'" loading="lazy"></a><p class="work-catalogue-date">'+escapeHTML(item.dateLabel||'Data de publicação em verificação')+'</p><p class="work-catalogue-description">'+escapeHTML(item.description)+'</p><a class="work-catalogue-watch" href="'+escapeHTML(item.links?.[0]?.url||'#')+'" target="_blank" rel="noopener noreferrer">Assistir ao vídeo no YouTube ↗</a></article>';
     }).join('');
-    const titleTargets=[...worksCatalogue.querySelectorAll('[data-work-title]')];
-    items.filter(x=>x.videoId).forEach(async item=>{
+    const titleTargets=[...timelineCovers.querySelectorAll('[data-work-title]')];
+    covers.forEach(async item=>{
       try{const response=await fetch('https://www.youtube.com/oembed?url='+encodeURIComponent('https://www.youtube.com/watch?v='+item.videoId)+'&format=json');if(!response.ok)return;const meta=await response.json();if(meta.title){titleTargets.filter(a=>a.dataset.workTitle===item.id).forEach(a=>a.textContent=meta.title);}}
       catch(error){}
     });
-  }).catch(()=>{worksCatalogue.innerHTML='<p class="muted">Não foi possível carregar o catálogo agora.</p>';});
+  }).catch(()=>{timelineCovers.innerHTML='<p class="muted">Não foi possível carregar os registros musicais agora.</p>';});
 }
