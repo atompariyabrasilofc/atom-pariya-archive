@@ -42,376 +42,398 @@
     ]
   },
   {
-    "id": "atom-cover-01",
-    "title": "Cover 01",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-01",
+    "title": "Registro musical 01",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "MhcmbPeP-Zk",
+    "sourceOrder": 1,
     "image": "https://i.ytimg.com/vi/MhcmbPeP-Zk/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/MhcmbPeP-Zk"
+        "url": "https://youtu.be/MhcmbPeP-Zk?is=xCvYY95deYV6ylTu"
       }
     ]
   },
   {
-    "id": "atom-cover-02",
-    "title": "Cover 02",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-02",
+    "title": "Registro musical 02",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "Uxm-nbQngOI",
+    "sourceOrder": 2,
     "image": "https://i.ytimg.com/vi/Uxm-nbQngOI/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/Uxm-nbQngOI"
+        "url": "https://youtu.be/Uxm-nbQngOI?is=yGui2oLHPVdgn20y"
       }
     ]
   },
   {
-    "id": "atom-cover-03",
-    "title": "Cover 03",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-03",
+    "title": "Registro musical 03",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "NcFiYtue3os",
+    "sourceOrder": 3,
     "image": "https://i.ytimg.com/vi/NcFiYtue3os/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/NcFiYtue3os"
+        "url": "https://youtu.be/NcFiYtue3os?is=AgbLR-O6MB23rBra"
       }
     ]
   },
   {
-    "id": "atom-cover-04",
-    "title": "Cover 04",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-04",
+    "title": "Registro musical 04",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "NcFiYtue3os",
+    "sourceOrder": 4,
     "image": "https://i.ytimg.com/vi/NcFiYtue3os/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/NcFiYtue3os"
+        "url": "https://youtu.be/NcFiYtue3os?is=AixvhrJlch0CjuUY"
       }
     ]
   },
   {
-    "id": "atom-cover-05",
-    "title": "Cover 05",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-05",
+    "title": "Registro musical 05",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "NcFiYtue3os",
+    "sourceOrder": 5,
     "image": "https://i.ytimg.com/vi/NcFiYtue3os/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/NcFiYtue3os"
+        "url": "https://youtu.be/NcFiYtue3os?is=55KRf0V1gn690-er"
       }
     ]
   },
   {
-    "id": "atom-cover-06",
-    "title": "Cover 06",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-06",
+    "title": "Registro musical 06",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "HlwsDiRlZto",
+    "sourceOrder": 6,
     "image": "https://i.ytimg.com/vi/HlwsDiRlZto/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/HlwsDiRlZto"
+        "url": "https://youtu.be/HlwsDiRlZto?is=gqdA-_D9BWU-HDzb"
       }
     ]
   },
   {
-    "id": "atom-cover-07",
-    "title": "Cover 07",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-07",
+    "title": "Registro musical 07",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "pWvgTsujPmQ",
+    "sourceOrder": 7,
     "image": "https://i.ytimg.com/vi/pWvgTsujPmQ/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/pWvgTsujPmQ"
+        "url": "https://youtu.be/pWvgTsujPmQ?is=jv87CSGKorwm4GYe"
       }
     ]
   },
   {
-    "id": "atom-cover-08",
-    "title": "Cover 08",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-08",
+    "title": "Registro musical 08",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "xKvyaHk8n0c",
+    "sourceOrder": 8,
     "image": "https://i.ytimg.com/vi/xKvyaHk8n0c/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/xKvyaHk8n0c"
+        "url": "https://youtu.be/xKvyaHk8n0c?is=awHlps5Ko_76LCIE"
       }
     ]
   },
   {
-    "id": "atom-cover-09",
-    "title": "Cover 09",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-09",
+    "title": "Registro musical 09",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "me_CFNrtX8A",
+    "sourceOrder": 9,
     "image": "https://i.ytimg.com/vi/me_CFNrtX8A/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/me_CFNrtX8A"
+        "url": "https://youtu.be/me_CFNrtX8A?is=IpyZ7f3wetQcBA2z"
       }
     ]
   },
   {
-    "id": "atom-cover-10",
-    "title": "Cover 10",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-10",
+    "title": "Registro musical 10",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "a6546O7yrhM",
+    "sourceOrder": 10,
     "image": "https://i.ytimg.com/vi/a6546O7yrhM/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/a6546O7yrhM"
+        "url": "https://youtu.be/a6546O7yrhM?is=1i4L9vBPVxXmK908"
       }
     ]
   },
   {
-    "id": "atom-cover-11",
-    "title": "Cover 11",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-11",
+    "title": "Registro musical 11",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "R4CWz5-7tF8",
+    "sourceOrder": 11,
     "image": "https://i.ytimg.com/vi/R4CWz5-7tF8/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/R4CWz5-7tF8"
+        "url": "https://youtu.be/R4CWz5-7tF8?is=SvYMT2rfeW5Nj2KM"
       }
     ]
   },
   {
-    "id": "atom-cover-12",
-    "title": "Cover 12",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-12",
+    "title": "Registro musical 12",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "G1Rl71nmP64",
+    "sourceOrder": 12,
     "image": "https://i.ytimg.com/vi/G1Rl71nmP64/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/G1Rl71nmP64"
+        "url": "https://youtu.be/G1Rl71nmP64?is=4-ZC5P1wqmt-qW-_"
       }
     ]
   },
   {
-    "id": "atom-cover-13",
-    "title": "Cover 13",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-13",
+    "title": "Registro musical 13",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "1IpFZmiz4sI",
+    "sourceOrder": 13,
     "image": "https://i.ytimg.com/vi/1IpFZmiz4sI/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/1IpFZmiz4sI"
+        "url": "https://youtu.be/1IpFZmiz4sI?is=7sJR6IrnjeZBh-vF"
       }
     ]
   },
   {
-    "id": "atom-cover-14",
-    "title": "Cover 14",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-14",
+    "title": "Registro musical 14",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "fp3xoNcp2n8",
+    "sourceOrder": 14,
     "image": "https://i.ytimg.com/vi/fp3xoNcp2n8/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/fp3xoNcp2n8"
+        "url": "https://youtu.be/fp3xoNcp2n8?is=8a28-QhFWo1m6_W3"
       }
     ]
   },
   {
-    "id": "atom-cover-15",
-    "title": "Cover 15",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-15",
+    "title": "Registro musical 15",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "fp3xoNcp2n8",
+    "sourceOrder": 15,
     "image": "https://i.ytimg.com/vi/fp3xoNcp2n8/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/fp3xoNcp2n8"
+        "url": "https://youtu.be/fp3xoNcp2n8?is=SlE-gCfDzLsxuGEY"
       }
     ]
   },
   {
-    "id": "atom-cover-16",
-    "title": "Cover 16",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-16",
+    "title": "Registro musical 16",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "wasOuEN9ijQ",
+    "sourceOrder": 16,
     "image": "https://i.ytimg.com/vi/wasOuEN9ijQ/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/wasOuEN9ijQ"
+        "url": "https://youtu.be/wasOuEN9ijQ?is=pxTOCVKU8dIhN0HS"
       }
     ]
   },
   {
-    "id": "atom-cover-17",
-    "title": "Cover 17",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-17",
+    "title": "Registro musical 17",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "QddSxTaqY7k",
+    "sourceOrder": 17,
     "image": "https://i.ytimg.com/vi/QddSxTaqY7k/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/QddSxTaqY7k"
+        "url": "https://youtu.be/QddSxTaqY7k?is=SFA0iiN398cHxU5Z"
       }
     ]
   },
   {
-    "id": "atom-cover-18",
-    "title": "Cover 18",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-18",
+    "title": "Registro musical 18",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "RNnP40CBGuU",
+    "sourceOrder": 18,
     "image": "https://i.ytimg.com/vi/RNnP40CBGuU/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/RNnP40CBGuU"
+        "url": "https://youtu.be/RNnP40CBGuU?is=OHlfWJyf-ziTY86f"
       }
     ]
   },
   {
-    "id": "atom-cover-19",
-    "title": "Cover 19",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-19",
+    "title": "Registro musical 19",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "qcso4m_XF14",
+    "sourceOrder": 19,
     "image": "https://i.ytimg.com/vi/qcso4m_XF14/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/qcso4m_XF14"
+        "url": "https://youtu.be/qcso4m_XF14?is=k7mFzJjZRK4aRX2N"
       }
     ]
   },
   {
-    "id": "atom-cover-20",
-    "title": "Cover 20",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-20",
+    "title": "Registro musical 20",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "5qgRiiyIgRU",
+    "sourceOrder": 20,
     "image": "https://i.ytimg.com/vi/5qgRiiyIgRU/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/5qgRiiyIgRU"
+        "url": "https://youtu.be/5qgRiiyIgRU?is=cf2XWJCKK4phZCI7"
       }
     ]
   },
   {
-    "id": "atom-cover-21",
-    "title": "Cover 21",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-21",
+    "title": "Registro musical 21",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "peMwLYjGa7k",
+    "sourceOrder": 21,
     "image": "https://i.ytimg.com/vi/peMwLYjGa7k/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/peMwLYjGa7k"
+        "url": "https://youtu.be/peMwLYjGa7k?is=3O0U1PDEaCOrFpmk"
       }
     ]
   },
   {
-    "id": "atom-cover-22",
-    "title": "Cover 22",
-    "kind": "Cover musical",
-    "genre": "Música · Cover",
+    "id": "atom-timeline-22",
+    "title": "Registro musical 22",
+    "kind": "Registro musical",
+    "genre": "Música · Cover / MV",
     "date": null,
-    "dateLabel": "Data de lançamento em verificação no YouTube",
+    "dateLabel": "Data a informar",
     "videoId": "mq4pYqaClB0",
+    "sourceOrder": 22,
     "image": "https://i.ytimg.com/vi/mq4pYqaClB0/hqdefault.jpg",
-    "description": "Apresentação musical de Atom Pariya. A data de publicação será preenchida após confirmação na página original do YouTube.",
+    "description": "Registro musical da trajetória artística de Atom Pariya. A identificação do lançamento e sua data serão complementadas.",
     "links": [
       {
         "label": "Assistir ao vídeo no YouTube",
-        "url": "https://youtu.be/mq4pYqaClB0"
+        "url": "https://youtu.be/mq4pYqaClB0?is=mxku1HRk2lIBY5ar"
       }
     ]
   }
