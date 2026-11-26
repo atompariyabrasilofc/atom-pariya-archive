@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171318">
+<title>Atom Pariya Archive · Work Details</title><link rel="stylesheet" href="styles.css?v=work-details-1">
+</head>
+<body>
+<header class="site-header"><a class="brand" href="index.html#works"><img class="brand-logo" src="1.%20assets/Logo%20png.png" alt="Atom Pariya Brasil"><span class="brand-label"><span>Atom Pariya</span><span>Archive</span></span></a><a class="outline-link" href="index.html#works">Voltar ao catálogo</a></header>
+<main class="section-wrap work-detail-page"><div id="work-detail-page-content"><p class="muted">Carregando detalhes da obra…</p></div></main>
+<footer><strong>ATOM PARIYA ARCHIVE</strong><p>Created with love by Atom Pariya Brasil. Fan-made project; not affiliated with or endorsed by Atom or her representatives.</p></footer>
+<script>
+(async()=>{const root=document.querySelector('#work-detail-page-content');const id=new URLSearchParams(location.search).get('id');const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));try{const rows=await fetch('data/works.json').then(r=>r.json());const item=rows.find(x=>x.id===id);if(!item)throw new Error('not found');document.title=item.title+' · Atom Pariya Archive';root.innerHTML='<p class="eyebrow">'+safe(item.kind)+' · '+safe(item.genre)+'</p><h1>'+safe(item.title)+'</h1><p class="work-detail-page-date">'+safe(item.dateLabel||'Data de lançamento em verificação no YouTube')+'</p><div class="work-detail-page-cover"><img src="'+safe(item.image)+'" alt="Capa de '+safe(item.title)+'"></div><p class="work-detail-page-description">'+safe(item.description)+'</p>'+(item.videoId?'<div class="work-detail-video"><iframe src="https://www.youtube-nocookie.com/embed/'+safe(item.videoId)+'" title="'+safe(item.title)+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>':'')+'<div class="work-detail-links">'+(item.links||[]).map(x=>'<a href="'+safe(x.url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.label)+' ↗</a>').join('')+'</div><p class="work-detail-page-note">Fotos adicionais, vídeos de bastidores e informações complementares poderão ser incorporados a esta página conforme forem catalogados e confirmados.</p>';}catch(e){root.innerHTML='<h1>Obra não encontrada</h1><p>Volte ao catálogo e selecione uma obra disponível.</p>';}})();
+</script>
+</body></html>
