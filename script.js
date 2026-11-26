@@ -112,6 +112,33 @@ document.querySelectorAll('[data-slideshow="social-death-vote"]').forEach(slides
 });
 
 
+// Re:Peach: sort archived lives chronologically when a date is available.
+const liveGrid = document.querySelector('.live-grid');
+const liveSort = document.querySelector('#live-sort');
+if (liveGrid && liveSort) {
+  const liveCards = [...liveGrid.querySelectorAll('.live-card')];
+  liveCards.forEach((card, index) => {
+    card.dataset.archiveOrder = String(index);
+  });
+  function sortLiveCards(direction) {
+    const sorted = [...liveCards].sort((a, b) => {
+      const dateA = a.dataset.date || '';
+      const dateB = b.dataset.date || '';
+      // Keep undated entries together after dated entries until their dates are confirmed.
+      if (!dateA && !dateB) return Number(a.dataset.archiveOrder) - Number(b.dataset.archiveOrder);
+      if (!dateA) return 1;
+      if (!dateB) return -1;
+      const comparison = dateA.localeCompare(dateB);
+      if (comparison !== 0) return direction === 'newest' ? -comparison : comparison;
+      // For the same date, preserve the original sequence (Part 1 before Part 2).
+      return Number(a.dataset.archiveOrder) - Number(b.dataset.archiveOrder);
+    });
+    sorted.forEach(card => liveGrid.appendChild(card));
+  }
+  liveSort.addEventListener('change', () => sortLiveCards(liveSort.value));
+  sortLiveCards(liveSort.value);
+}
+
 // Re:Peach: load the exact public YouTube title for each archived live.
 document.querySelectorAll('.live-card[data-video-id]').forEach(async card => {
   const videoId = card.dataset.videoId;
