@@ -92,6 +92,14 @@ nav a:hover, .text-link:hover { color: var(--silver); }
   border-radius: 12px; background: #17151966; color: var(--cream);
   text-decoration: none; text-align: left; transition: border-color .2s ease, background .2s ease, transform .2s ease;
 }
+
+.social-links a { grid-template-columns: 38px minmax(0, 1fr) auto; gap: 0 11px; min-height: 66px; padding: 10px 13px; }
+.social-brand-icon { width: 36px; height: 36px; display: grid; place-items: center; grid-column: 1; grid-row: 1; border: 1px solid #756574; border-radius: 10px; background: #ffffff0b; }
+.social-brand-icon img { display: block; width: 19px; height: 19px; object-fit: contain; }
+.social-copy { display: flex; flex-direction: column; gap: 3px; grid-column: 2; grid-row: 1; min-width: 0; }
+.social-detail { grid-column: auto; overflow-wrap: anywhere; }
+.social-arrow { grid-column: 3; grid-row: 1; }
+
 .social-name { font-size: 13px; font-weight: 800; letter-spacing: .02em; }
 .social-detail { color: var(--muted); font-size: 10px; grid-column: 1; }
 .social-arrow { color: var(--pink); font-size: 16px; grid-column: 2; grid-row: 1 / span 2; }
