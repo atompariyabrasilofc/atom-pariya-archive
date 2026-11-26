@@ -671,3 +671,22 @@ const careerTimeline=document.querySelector('#timeline .timeline-list');
 function openCareerRecord(key){const item=careerRecords[key];if(!item||!careerPanel||!careerContent)return;const safe=s=>String(s).replace(/[&<>\"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));careerContent.innerHTML='<div class="work-detail-content"><p class="work-detail-meta">'+safe(item.kind)+'</p><h2>'+safe(item.title)+'</h2><p class="catalogue-date">'+safe(item.dates)+'</p><p>'+safe(item.description)+'</p>'+(item.gallery.length?'<div class="work-detail-gallery">'+item.gallery.map((src,i)=>'<img src="'+safe(src)+'" alt="'+safe(item.title)+' — imagem '+(i+1)+'" loading="lazy">').join('')+'</div>':'')+'<div class="work-detail-links">'+item.links.map(([label,url])=>'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(label)+' ↗</a>').join('')+'</div></div>';careerPanel.hidden=false;careerTimeline.hidden=true;careerPanel.scrollIntoView({behavior:'smooth',block:'start'});}
 document.querySelectorAll('[data-work-detail]').forEach(button=>button.addEventListener('click',()=>openCareerRecord(button.dataset.workDetail)));
 document.querySelector('[data-work-back]')?.addEventListener('click',()=>{careerPanel.hidden=true;careerTimeline.hidden=false;careerTimeline.scrollIntoView({behavior:'smooth',block:'start'});});
+
+
+// Works catalogue: cards link to a dedicated detail page; YouTube oEmbed supplies public titles.
+const worksCatalogue=document.querySelector('#works-catalogue');
+if(worksCatalogue){
+  fetch('data/works.json').then(r=>{if(!r.ok)throw new Error('Works data unavailable');return r.json();}).then(items=>{
+    const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    worksCatalogue.innerHTML=items.map(item=>{
+      const detail='work.html?id='+encodeURIComponent(item.id);
+      const date=item.dateLabel||'Data de lançamento em verificação no YouTube';
+      return '<article class="work-catalogue-card"><p class="work-catalogue-kind">'+escapeHTML(item.kind)+' · '+escapeHTML(item.genre)+'</p><h3><a href="'+detail+'" target="_blank" rel="noopener noreferrer" data-work-title="'+escapeHTML(item.id)+'">'+escapeHTML(item.title)+'</a></h3><a class="work-catalogue-image" href="'+detail+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir detalhes de '+escapeHTML(item.title)+'"><img src="'+escapeHTML(item.image)+'" alt="Capa de '+escapeHTML(item.title)+'" loading="lazy"></a><p class="work-catalogue-date">'+escapeHTML(date)+'</p><p class="work-catalogue-description">'+escapeHTML(item.description)+'</p><a class="work-catalogue-watch" href="'+escapeHTML(item.playlist||item.links?.[0]?.url||'#')+'" target="_blank" rel="noopener noreferrer">'+(item.playlist?'Assistir à obra completa':'Assistir ao vídeo no YouTube')+' ↗</a></article>';
+    }).join('');
+    const titleTargets=[...worksCatalogue.querySelectorAll('[data-work-title]')];
+    items.filter(x=>x.videoId).forEach(async item=>{
+      try{const response=await fetch('https://www.youtube.com/oembed?url='+encodeURIComponent('https://www.youtube.com/watch?v='+item.videoId)+'&format=json');if(!response.ok)return;const meta=await response.json();if(meta.title){titleTargets.filter(a=>a.dataset.workTitle===item.id).forEach(a=>a.textContent=meta.title);}}
+      catch(error){}
+    });
+  }).catch(()=>{worksCatalogue.innerHTML='<p class="muted">Não foi possível carregar o catálogo agora.</p>';});
+}
