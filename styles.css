@@ -487,3 +487,16 @@ main > section.profiles.page-hidden { display: none !important; }
 .timeline-entry-content .work-catalogue-kind{order:3;margin:0 0 8px}
 .timeline-entry-content p:not(.timeline-year):not(.work-catalogue-date):not(.work-catalogue-kind){order:4}
 .timeline-entry-content .timeline-detail-button,.timeline-entry-content .timeline-watch-link,.timeline-entry-content>a:not(.timeline-musical-image){order:5}
+
+
+/* AESTINY dictionary and fandom reference pages */
+.knowledge-intro { max-width: 850px; margin: 0 0 22px; color: #d8cdd5; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.knowledge-card {
+  min-width: 0; padding: 21px; border: 1px solid var(--line); border-radius: 17px;
+  background: linear-gradient(145deg, var(--panel2), var(--panel));
+}
+.knowledge-card h3 { margin: 3px 0 8px; font-size: 20px; }
+.knowledge-card p:not(.eyebrow) { margin: 0; color: #d0c5ce; }
+.knowledge-card .eyebrow { margin-bottom: 7px; }
+@media (max-width: 650px) { .knowledge-grid { grid-template-columns: 1fr; } }
